@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="/static/css/user.css">
+</head>
+<script type='text/javascript' src='/static/js/user.js'></script>
+<body>
+  <div class="main">
+    <div class="navbar">
+        <nav class='sidebar sidebar-menu-collapsed'>
+           <div class="icon">
+              <h2 class="logo">SCMxpert</h2>
+          </div>
+            <ul>
+              <li ><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
+              <li><a  href="#">Device Data</a></li>
+              <li class="active"><a>My Shipments</a></li>
+              <li ><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
+              <li><a href="#">My Account</a></li>
+              <li><a  href="#">Logout</a></li>
+        </nav>
+    </div>
+    <p id="value" style="display: none;">{{token}}</p>
+    <script> 
+      var key = document.getElementById("value").innerText;
+      console.log(key)
+      localStorage.setItem('token', key);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>
+            My Shipment
+        </title>
+       
+        <link rel="stylesheet" href="/static/css/devicedata.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="navbar">
+                <nav class='sidebar sidebar-menu-collapsed'>
+                   <div class="icon">
+                      <h2 class="logo">SCMxpert</h2>
+                  </div>
+                    <ul>
+                      <li ><a href="http://127.0.0.1:8000/user">Home</a></li>
+                      <li><a  href="#">Dashboard</a></li>
+                      <li class="active"><a  href="#">Devicedata</a></li>
+                      <li><a  href="#">My Shipments</a></li>
+                      <li ><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
+                      <li><a href="#">My Account</a></li>
+                </nav>
+            </div>
+
+
+            <!-- ----------------------------------------------- -->
+
+            <div class="tb">
+                <table>
+                    <tr id="header">
+                        <th>Device Id</th>
+                        <th>Battery Level</th>
+                        <th>Sensor Temperature</th>
+                        <th>Route From</th>
+                        <th>Route To</th>
+                      
+                    </tr>
+                    <!-- {% for v in devicedata %} -->
+                    <tr>
+                        <td>{{v.deviceid}}</td>
+                        <td>{{v.batterylevel}}</td>
+                        <td>{{v.sensortemperature}}</td>
+                        <td>{{v.routrfrom}}</td>
+                        <td>{{v.routeto}}</td>
+                    </tr>
+                    <!-- {% endfor %} -->
+                </table>
+            </div>
+
+
+
+    </body>
+</html>

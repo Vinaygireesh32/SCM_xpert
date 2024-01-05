@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Shipment Form</title>
+  <link rel="stylesheet" href="/static/css/newshipment.css">
+ 
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <nav class='sidebar sidebar-menu-collapsed'>
+               <div class="icon">
+                  <h2 class="logo">SCMxpert</h2>
+              </div>
+                <ul>
+                  <li ><a href="http://127.0.0.1:8000/user">Home</a></li>
+                  <li><a  href="#">Dashboard</a></li>
+                  <li><a href="http://127.0.0.1:8000/myshipment">My Shipments</a></li>
+                  <li class="active"><a>New Shipment</a></li>
+                  <li><a href="#">My Account</a></li>
+                  <li><a type="clear-btn" href="http://127.0.0.1:8000/login">Log out</a></li>
+            </nav>
+        </div>
+
+        <!-- ------------------------------ -->
+
+        
+        <div class="container">
+            <div class="text">
+               New Shipment
+            </div>
+            <form action="/newshipment" method="post" >
+               <div class="form-row">
+                  <div class="input-data">
+                     <input type="text" name="shipment_num" required>
+                     <div class="underline"></div>
+                     <label for="">Shipment Number</label>
+                  </div>
+                  <div class="input-data">
+                     <input type="text" name="container_num" required>
+                     <div class="underline"></div>
+                     <label for="">Container Number</label>
+                  </div>
+               </div>
+               <div class="form-row">
+                <div class="input-data">
+                  
+                   <input type="text" name="route_details" required>
+                   <!-- <select name="Select Route">
+                     <option value="Tirupati to Bangalore">Tirupati to Bangalore</option>
+                     <option value="Tirupati to Chennai">Tirupati to Chennai</option>
+                     <option value="Tirupati to Hyderabad">Tirupati to Hyderabad</option>
+                  </select> -->
+                   <div class="underline"></div>
+                   <label for="">Route Details</label>
+                </div>
+                <div class="input-data">
+                   <input type="text" name="goods_type" required>
+                   <div class="underline"></div>
+                   <label for="">Goods Type</label>
+                </div>
+             </div>
+               <div class="form-row">
+                  <div class="input-data">
+                     <input type="text" name="device" required>
+                     <div class="underline"></div>
+                     <label for="">Device</label>
+                  </div>
+                  <div class="input-data">
+                     <input type="text" name="expected_delivery_date" required>
+                     <div class="underline"></div>
+                     <label for="">Expected Delivery Date</label>
+                  </div>
+               </div>
+               <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="po_num" required>
+                   <div class="underline"></div>
+                   <label for="">PO Number</label>
+                </div>
+                <div class="input-data">
+                   <input type="text" name="delivery_num" required>
+                   <div class="underline"></div>
+                   <label for="">Delivery Number</label>
+                </div>
+             </div>
+             <div class="form-row">
+                <div class="input-data">
+                   <input type="text" name="ndc_num" required>
+                   <div class="underline"></div>
+                   <label for="">NDC Number</label>
+                </div>
+                <div class="input-data">
+                   <input type="text" name="batch_id" required>
+                   <div class="underline"></div>
+                   <label for="">Batch ID</label>
+                </div>
+             </div>
+               <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="serial_num" required>
+                    <div class="underline"></div>
+                    <label for="">Serial Number Of Goods</label>
+                 </div>
+               <div class="input-data textarea">
+                  <textarea rows="8" cols="80" name="description" required></textarea>
+                  <br />
+                  
+                  <div class="underline"></div>
+                  <label for="">Shipment Description</label>
+                  <br />
+                  <div class="form-row clear-btn">
+                   
+                        <input type="reset" value="Clear">
+                
+                     <input type="submit" value="Submit">
+                  </div>
+            </form>
+            </div>
+        </div>
+  </body>
+</html>
