@@ -1,95 +1,234 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    align-items: center;
-  }
-  .main{
-    background: fixed;
-    background-image:url(/static/bg.jpg);
-    background-position: center;
-    background-size: cover;
-    height: 815px;
-  }
-  .navbar{
-    background-color: rgb(0, 65, 102);
-    width: auto;
-    height: 75px;
-    display: flex;
-    margin: auto;
-  }
-  .logo{
-    color: #f56a2a;
-    font-size: 35px;
-    font-family: Arial;
-    padding-left: 80px;
-    text-shadow: 0 0 10px #000000, 0 0 10px #00000085, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000;
-    padding-top: -20px;
-  }
-  .menu{
-    margin-left: 38%;
-    width: 150px;
-    height: 60px;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.banner{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.slider1,.slider2,.slider3{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0 ;
+}
+#slideImg1,#slideImg2,#slideImg3{
   
-  ul{
-    
-    nav-left: auto;
-    width: 160%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  ul li{
-    width: 50%;
-    list-style: none;
-    margin-left: 80%;
-    margin-top: 25px;
-    font-size: 14px;
-    border-radius: 10px;   
-  }
-  ul li a{
-    text-decoration: none;
-     color: #ffffff;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 500 ;
-    font-size: 24px;
-    padding-top: 0px;
-    left: 100%;
-    transition: 0.4s ease-in-out;
-  }
-  ul li a:hover{
-    color: #f56a2a;
-  }
-
-  .cn{
-    width: 160px;
-    height: 40px;
-    background: #1a3c64             ;
-    border: none;
-    margin-top: 600px;
-    margin-left: 200px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .4s ease;
-    border: 2px solid #ffffff;
-    
+  width: 100%;
+  height: 100%;
 }
 
-.cn a{
-    text-decoration: none;
-    color: #ffffff;
-    transition: .3s ease;
+.overlay{
+  width: 100%;
+  height: 100vh;
+ 
+  position: absolute;
+  top: 0;
+}
+.text-box{
+  width: 800px;
+  position: absolute;
+  top: 300px;
+  left:100px;
+  color: #ffffff;
+  animation: textup 12s linear infinite;
+  transform: translateY(100px);
+}
+.text-box h1{
+  margin-bottom: 40px;
+  color: #ff661f;
+}
+.text-box p{
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 80px;
+}
+.text-box span{
+  background: red;
+  height: 1px;
+  width: 100px;
+  position: absolute;
+  left: 0;
+}
+.navbar{
+  background-color: rgb(0, 65, 102);
+  width: auto;
+  height: 75px;
+  display: flex;
+  margin: auto;
+  z-index: 20000;
+  top: 0;
+}
+.logo{
+  color: #f56a2a;
+  font-size: 35px;
+  font-family: Arial;
+  padding-left: 80px;
+  text-shadow: 0 0 10px #000000, 0 0 10px #00000085, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000;
+  padding-top: 10px;
+}
+.menu{
+  margin-left: 38%;
+  width: 150px;
+  height: 60px;
 }
 
-.cn:hover{
-    background-color: #ffffff00;
+ul{
+  
+  nav-left: auto;
+  width: 160%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul li{
+  width: 0%;
+  list-style: none;
+  margin-left: 80%;
+  margin-top: 25px;
+  font-size: 14px;
+  border-radius: 10px;   
+}
+ul li a{
+  text-decoration: none;
+   color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500 ;
+  font-size: 24px;
+  padding-top: 0px;
+  left: 100%;
+  transition: 0.4s ease-in-out;
+}
+ul li a:hover{
+  color: #f56a2a;
+}
+.banner1,.banner2,.banner3,.banner4{
+  height: 848px;
+  /* width: auto; */
+  position: absolute;
+  left:0;
+  top: -30px;
+  overflow: hidden;
+}
+img{
+  width: 120%;
+  /* position: absolute; */
+  left:50%;
+  top: 40%;
+  transform: translate(0%,9%);
+  animation: zoom-out 5s linear infinite;
+}
+@keyframes zoom-out{
+  100%{
+    width:100%;
+
+  }
+
+}
+.text-box{
+  width: 800px;
+  position: absolute;
+  top: 300px;
+  left:100px;
+  color: #ffffff;
+  animation: textup 12s linear infinite;
+  transform: translateY(100px);
+}
+.text-box h1{
+  margin-bottom: 40px;
+}
+.text-box p{
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 80px;
+}
+.text-box span{
+  background: red;
+  height: 1px;
+  width: 100px;
+  position: absolute;
+  left: 0;
+}
+.banner1{
+  animation: slide1 12s linear infinite;
+}
+.banner2{
+  animation: slide2 12s linear infinite;
+}
+.banner3{
+  animation: slide3 12s linear infinite;
 }
 
 
-
-/* /////////////////////////// */
-
+@keyframes slide1{
+  0%{
+    visibility: visible;
+  }
+  25%{
+    visibility: hidden;
+  }
+  50%{
+    visibility: hidden;
+  }
+  75%{
+    visibility: hidden;
+  }
+  100%{
+    visibility: visible;
+  }
+}
+@keyframes slide2{
+  0%{
+    visibility: hidden;
+  }
+  25%{
+    visibility: hidden;
+  }
+  50%{
+    visibility: visible;
+  }
+  75%{
+    visibility: hidden;
+  }
+  100%{
+    visibility: hidden;
+  }
+}
+@keyframes slide3{
+  0%{
+    visibility: hidden;
+  }
+  25%{
+    visibility: hidden;
+  }
+  50%{
+    visibility: hidden;
+  }
+  75%{
+    visibility: visible;
+  }
+  100%{
+    visibility: visible;
+  }
+}
+@keyframes textup{
+  10%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+.text-box1{
+  animation-delay: 0s;
+}
+.text-box2{
+  animation-delay: 3s;
+}
+.text-box3{
+  animation-delay: 6s;
+}
 

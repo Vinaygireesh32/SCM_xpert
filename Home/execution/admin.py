@@ -10,6 +10,6 @@ html = Jinja2Templates(directory = "html")
 web.mount("/static", StaticFiles(directory="static"), name = "static")
 
 @web.get("/admin")
-def details(details : Request):
-    return html.TemplateResponse("admin.html", {"request": details})
-
+def admin(request : Request):
+    return html.TemplateResponse("admin.html", { "request" : request})
+   

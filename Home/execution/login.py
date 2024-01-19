@@ -1,109 +1,103 @@
-from fastapi import APIRouter,Request,Form
+from fastapi import APIRouter, Request, Form, Depends, HTTPException, status, Cookie
+from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execute.execute import *
-import jwt
-import datetime
+from datetime import datetime, timedelta
+from fastapi.security import OAuth2PasswordBearer
+from typing import Optional
+from passlib.context import CryptContext
+from jose import jwt, ExpiredSignatureError, JWTError
+from dotenv import load_dotenv
+import secrets
+
+
 
 web = APIRouter()
-
-html = Jinja2Templates(directory = "html")
-web.mount("/static", StaticFiles(directory="static"), name = "static")
-
-# Secret key for JWT (change it to a strong and secure key in production)
-SECRET_KEY = "your_secret_key"
-ALGORITHM = "HS256"
-
-# Function to generate a JWT token
-def create_jwt_token(username: str) -> str:
-    expiration_time = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-    payload = {"sub": username, "exp": expiration_time}
-    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-    print(token)
-    return token
+html = Jinja2Templates(directory="html")
+web.mount("/static", StaticFiles(directory="static"), name="static")
 
 @web.get("/login")
-def login(request : Request):
+def login(request: Request):
     return html.TemplateResponse("login.html", {"request": request})
 
 @web.post("/login")
-def login(request : Request, username : str = Form(), password : str = Form()):
-    var = user_cred.find_one({ "$and" : [ {"username":username},{"password":password} ] })
-    adm = admin_cred.find_one({ "$and" : [ {"username":username},{"password":password} ] })
+def login(request: Request, username: str = Form(...), password: str = Form()):
+    # Try to get the user from user_cred
+    user = user_cred.find_one({"username": username, "password" : password})
+    # pwd_cxt.hash(password)
+    if user:
+        token = create_access_token(data={"sub": user["username"], "email": user["email"], "role": "user"})
+        response_content = {
+            "token": token,
+            "username": user["username"],
+            "email": user["email"],
+            "role":"User",
+        }
+        return JSONResponse(content=response_content, status_code=200)
     
-    if var:
-        token = create_jwt_token(username)
-        return html.TemplateResponse("dashboard.html", {"request": request, "token":token})
-    elif adm:
-        token = create_jwt_token(username)
-        return html.TemplateResponse("admin.html", {"request": request, "token":token})
-    return html.TemplateResponse("login.html", {"request": request})
+    # If user is not found, try to get the admin from admin_cred
+    admin =  admin_cred.find_one({"username": username, "password" : password})
     
+    if admin:
+        token = create_access_token(data={"sub": admin["username"], "email": admin["email"], "role": "admin"})
+        response_content = {
+            "token": token,
+            "username": admin["username"],
+            "email": admin["email"],
+            "role": "Admin",
+        }
+        return JSONResponse(content=response_content, status_code=200)
+    
+    # If neither user nor admin is found, return invalid credentials
+    response_content = {"detail": "Invalid credentials"}
+    return JSONResponse(content=response_content, status_code=401)
 
-# from fastapi import APIRouter, Request, Depends, Form, HTTPException, status
-# from fastapi.templating import Jinja2Templates
-# from fastapi.staticfiles import StaticFiles
-# from fastapi.security import OAuth2PasswordBearer
-# from execute.execute import *
-# import jwt
-# import datetime
+SECRET_KEY = "your_secret_key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-# web = APIRouter()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-# html = Jinja2Templates(directory="html")
-# web.mount("/static", StaticFiles(directory="static"), name="static")
+pwd_cxt = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# # Secret key for JWT (change it to a strong and secure key in production)
-# SECRET_KEY = "your_secret_key"
-# ALGORITHM = "HS256"
+class Hash:
+    def hash_password(pwd: str):   
+        return pwd_cxt.hash(pwd)
 
-# # Function to generate a JWT token
-# def create_jwt_token(username: str) -> str:
-#     expiration_time = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-#     payload = {"sub": username, "exp": expiration_time}
-#     token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-#     return token
+    def verify_password(pwd: str, hashed_password: str):  
+        return pwd_cxt.verify(pwd, hashed_password)
 
-# # OAuth2 scheme for token authentication
-# oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
 
-# # Dependency function to get current user from JWT token
-# def get_current_user(token: str = Depends(oauth2_scheme)):
-#     credentials_exception = HTTPException(
-#         status_code=status.HTTP_401_UNAUTHORIZED,
-#         detail="Invalid credentials",
-#         headers={"WWW-Authenticate": "Bearer"},
-#     )
-#     try:
-#         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-#         username: str = payload.get("sub")
-#         if username is None:
-#             raise credentials_exception
-#     except jwt.ExpiredSignatureError:
-#         raise credentials_exception
-#     except jwt.JWTError:
-#         raise credentials_exception
-#     return username
 
-# @web.get("/login")
-# def login(request: Request):
-#     return html.TemplateResponse("login.html", {"request": request})
 
-# @web.post("/login")
-# def login_post(request: Request, username: str = Form(...), password: str = Form(...)):
-#     var = user_cred.find_one({"$and": [{"username": username}, {"password": password}]})
-#     adm = admin_cred.find_one({"$and": [{"username": username}, {"password": password}]})
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=int(ACCESS_TOKEN_EXPIRE_MINUTES))
+    to_encode.update({"exp": expire})
+    
+    # Include the role in the token for admin
+    if "role" in to_encode:
+        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    else:
+        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    
+    return encoded_jwt
 
-#     if var:
-#         token = create_jwt_token(username)
-#         return html.TemplateResponse("user.html", {"request": request, "token": token})
-#     elif adm:
-#         token = create_jwt_token(username)
-#         return html.TemplateResponse("admin.html", {"request": request, "token": token})
-#     return html.TemplateResponse("login.html", {"request": request})
 
-# @web.get("/protected")
-# async def protected_route(request: Request, current_user: str = Depends(get_current_user)):
-#     return html.TemplateResponse("protected.html", {"request": request, "current_user": current_user})
+from jose import ExpiredSignatureError, JWTError
+from fastapi import HTTPException, status
 
-   
+def decode_token(token: str):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return payload
+    except ExpiredSignatureError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token has expired", headers={"WWW-Authenticate": "Bearer"})
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token", headers={"WWW-Authenticate": "Bearer"})

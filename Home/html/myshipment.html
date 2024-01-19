@@ -1,69 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <title>
-            My Shipment
-        </title>
-       
-        <link rel="stylesheet" href="/static/css/myshipment.css">
-    </head>
-    <body>
-        <div class="main">
-            <div class="navbar">
-                <nav class='sidebar sidebar-menu-collapsed'>
-                   <div class="icon">
-                      <h2 class="logo">SCMxpert</h2>
-                  </div>
-                    <ul>
-                      <li ><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
-                      <!-- <li><a  href="#">Dashboard</a></li> -->
-                      <li class="active"><a>My Shipments</a></li>
-                      <li ><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
-                      <li><a href="#">My Account</a></li>
-                      <li><a  href="#">Logout</a></li>
-                </nav>
-            </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0">
+    <title>
+        My Shipment
+    </title>
+
+    <link rel="stylesheet" href="/static/css/myshipment.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <nav class='sidebar sidebar-menu-collapsed'>
+                <div class="icon">
+                    <h2 class="logo">SCMxpert</h2>
+                </div>
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
+                    <!-- <li><a  href="#">Dashboard</a></li> -->
+                    <li class="active"><a>My Shipments</a></li>
+                    <li><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
+                    <li><a href="http://127.0.0.1:8000/myaccount">My Account</a></li>
+                    <li><a href="#">Logout</a></li>
+            </nav>
+        </div>
 
 
-            <!-- ----------------------------------------------- -->
+        <!-- ----------------------------------------------- -->
+        
+        <div class="tb">
+            <table>
+                <tr id="header">
+                    <th>Shipment Number</th>
+                    <th>Container Number</th>
+                    <th>Route Details</th>
+                    <th>Goods Type</th>
+                    <th>Device</th>
+                    <th>Expected Delivery Date</th>
+                    <th>PO Number</th>
+                    <th>Delivery Number</th>
+                    <th>NDC Number</th>
+                    <th>Batch ID</th>
+                    <th>Serial Number Of Goods</th>
+                </tr>
+                {% for v in myship %}
+                <tr>
+                    <td>{{v.shipmentnumber}}</td>
+                    <td>{{v.containerumber}}</td>
+                    <td>{{v.routedetails}}</td>
+                    <td>{{v.goodstype}}</td>
+                    <td>{{v.device}}</td>
+                    <td>{{v.expecteddeliverydate}}</td>
+                    <td>{{v.ponumber}}</td>
+                    <td>{{v.deliverynumber}}</td>
+                    <td>{{v.ndcnumber}}</td>
+                    <td>{{v.batchid}}</td>
+                    <td>{{v.serialnumberofgoods}}</td>
 
-            <div class="tb">
-                <table>
-                    <tr id="header">
-                        <th>Shipment Number</th>
-                        <th>Container Number</th>
-                        <th>Route Details</th>
-                        <th>Goods Type</th>
-                        <th>Device</th>
-                        <th>Expected Delivery Date</th>
-                        <th>PO Number</th>
-                        <th>Delivery Number</th>
-                        <th>NDC Number</th>
-                        <th>Batch ID</th>
-                        <th>Serial Number Of Goods</th>
-                    </tr>
-                    {% for v in myship %}
-                    <tr>
-                        <td>{{v.shipmentnumber}}</td>
-                        <td>{{v.containerumber}}</td>
-                        <td>{{v.routedetails}}</td>
-                        <td>{{v.goodstype}}</td>
-                        <td>{{v.device}}</td>
-                        <td>{{v.expecteddeliverydate}}</td>
-                        <td>{{v.ponumber}}</td>
-                        <td>{{v.deliverynumber}}</td>
-                        <td>{{v.ndcnumber}}</td>
-                        <td>{{v.batchid}}</td>
-                        <td>{{v.serialnumberofgoods}}</td>
-                        
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <p id="value" style="display: none;">{{token}}</p>
+    <script>
+        if (localStorage.getItem("token") === null) {
+            window.location.href = "/login";
+        }
+    </script>
+</body>
 
-
-
-    </body>
 </html>

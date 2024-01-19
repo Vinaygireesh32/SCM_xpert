@@ -12,3 +12,4 @@ web.mount("/static", StaticFiles(directory="static"), name = "static")
 @web.get("/forgot")
 def details(details : Request):
     return html.TemplateResponse("forgot.html", {"request": details})
+

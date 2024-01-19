@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Webpage Design</title>
-    <link rel="stylesheet" href="/static/css/user.css">
+    <title>SCMxpert Admin</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 </head>
-<script type='text/javascript' src='/static/js/user.js'></script>
+
 <body>
   <div class="main">
     <div class="navbar">
@@ -13,19 +14,20 @@
               <h2 class="logo">SCMxpert</h2>
           </div>
             <ul>
-              <li ><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
-              <li><a  href="#">Device Data</a></li>
-              <li class="active"><a>My Shipments</a></li>
-              <li ><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
-              <li><a href="#">My Account</a></li>
+              <li class="active"><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
+              <li><a  href="http://127.0.0.1:8000/devicedata">Device Data</a></li>
+              <li><a  href="http://127.0.0.1:8000/adminacc">My Account</a></li>
               <li><a  href="#">Logout</a></li>
+              <!-- <button onclick="logout()" id="logout">Logout</button> -->
         </nav>
     </div>
     <p id="value" style="display: none;">{{token}}</p>
-    <script> 
-      var key = document.getElementById("value").innerText;
-      console.log(key)
-      localStorage.setItem('token', key);
-      </script>
+    <script>
+        if (localStorage.getItem("token") === null) {
+            window.location.href = "/login";
+        }
+    </script>
+   
   </body>
+  <script src="../static/js/admin.js"></script>
 </html>

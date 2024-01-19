@@ -1,3 +1,7 @@
+if (localStorage.getItem("token") === null) {
+  window.location.href= "/login";
+}
+
 (function() {
     $(function() {
       var collapseMyMenu, expandMyMenu, hideMenuTexts, showMenuTexts;
@@ -33,33 +37,14 @@
   
   }).call(this);
 ////////////////////////////////////////////////////////////////////// 
-  // Store token in localStorage
-localStorage.setItem('token', 'your_token_value');
 
-// Retrieve token from localStorage
-const storedToken = localStorage.getItem('token');
-
-// // Open a database
-// const db = indexedDB.open('myDatabase', 1);
-
-// // Store token in the database
-// db.onsuccess = function(event) {
-//   const database = event.target.result;
-//   const transaction = database.transaction(['tokens'], 'readwrite');
-//   const objectStore = transaction.objectStore('tokens');
-//   objectStore.add('your_token_value', 'token_key');
-// };
-
-// // Retrieve token from the database
-// db.onsuccess = function(event) {
-//   const database = event.target.result;
-//   const transaction = database.transaction(['tokens']);
-//   const objectStore = transaction.objectStore('tokens');
-//   const request = objectStore.get('token_key');
-//   request.onsuccess = function(event) {
-//     const storedToken = event.target.result;
-//   };
-// };
+function logout() {
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("email");
+  sessionStorage.removeItem("role");
+  window.location.href= "/login";
+}
 
 
 

@@ -2,42 +2,41 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form | Dan Aleko</title>
+  <title>Login</title>
   <link rel="stylesheet" href="/static/css/login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="generate()">
   <div class="main">
     <div class="navbar">
       <div class="icon">
         <h2 class="logo">SCMxpert</h2>
       </div>
-
       <div class="menu">
         <ul>
           <li><a href="http://127.0.0.1:8000/home">Home</a></li>
           <li><a href="http://127.0.0.1:8000/about">About</a></li>
-          <li><a href="#">Service</a></li>
           <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </div>
+
   <div class="wrapper">
-    <form action="/login" method="post">
+    <form onsubmit="return validateForm()">
       <h1>Login</h1>
       <div class="input-box">
-
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" id="username" name="username" placeholder="Username" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
         <i class='bx bxs-lock-alt'></i>
       </div>
       <div class="remember-forgot">
@@ -45,32 +44,31 @@
         <a href="http://127.0.0.1:8000/forgot">Forgot Password</a>
       </div>
 
-      <body onload="generate()">
-        <!-- <div class="wrapper"></div> -->
+      <div>
         <h2 id="status" style="color: #000000;"></h2>
-        <div>
-          <input type="text" readonly id="generated-captcha">
-        </div>
-        <div>
-          <input type="text" id="entered-captcha" placeholder="Enter the captcha">
-          <button type="button"></button>
-          <i class="fa fa-refresh" onclick="generate()" id="gen" aria-hidden="true"></i>
-        </div>
-
-        <script src="/static/js/login.js"></script>
-      </body>
-
-
-      <button type="submit" class="btn" onclick="check()"> Login</button>
-      <div class="register-link">
-        <p>Dont have an account? <a href="http://127.0.0.1:8000/signup">Signup</a></p>
+        <input type="text" id="generated-captcha" readonly>
       </div>
-      
-  </div>
-</form >
-  
-    
-<script src="/static/js/login.js"></script>
-</body>
 
+      <div>
+        <input type="text" id="entered-captcha" placeholder="Enter the captcha">
+        <button type="button" onclick="generate()"></button>
+        <i class="fa fa-refresh" onclick="generate()" id="gen" aria-hidden="true"></i>
+      </div>
+
+      <button type="submit" id="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Don't have an account? <a href="http://127.0.0.1:8000/signup">Signup</a></p>
+      </div>
+    </form>
+
+    <p id="value" style="display: none;">{{token}}</p>
+    <script> 
+      var key = document.getElementById("value").innerText;
+      console.log(key)
+      localStorage.setItem('token', key);
+      </script>
+   
+  </div>
+</body>
+<script src="../static/js/login.js"></script>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/css/myaccount.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <nav class='sidebar sidebar-menu-collapsed'>
+                <div class="icon">
+                    <h2 class="logo">SCMxpert</h2>
+                </div>
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
+                    <li><a href="http://127.0.0.1:8000/myshipment">My Shipments</a></li>
+                    <li><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
+
+                    <li class="active"><a href="#">My Account</a></li>
+                    <li><a href="#">Logout</a></li>
+            </nav>
+        </div>
+        <div class="wrapper">
+            <div class="profile-card js-profile-card">
+                <div class="profile-card__img">
+                    <img src="/static/admin.png" alt="profile card">
+                </div>
+
+                <div class="profile-name" id="username"></div>
+                <p class="about" id="email"></p>
+                <p class="about" id="role" ></p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <p id="value" style="display: none;">{{token}}</p>
+    <script>
+        if (localStorage.getItem("token") === null) {
+            window.location.href = "/login";
+        }
+    </script>
+
+
+</body>
+<script src="/static/js/myaccount.js"></script>
+
+</html>

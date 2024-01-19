@@ -12,5 +12,7 @@ shipment_cred = DB["NewShipment"]
 
 admin_cred = DB["admin"]
 
+device_data = DB["DeviceData"]
+
 
 

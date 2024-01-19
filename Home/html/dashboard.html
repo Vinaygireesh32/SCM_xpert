@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Webpage Design</title>
-    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 </head>
 
 
@@ -16,29 +18,31 @@
         <ul>
             <li class="active"><a href="#">Dashboard</a></li>
             <li><a href="http://127.0.0.1:8000/myshipment">My Shipments</a></li>
-            <li><a href="#">Device Data</a></li>
+
             <li><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><a href="http://127.0.0.1:8000/myaccount">My Account</a></li>
             <li><a href="/html/login.html">Logout</a></li>
         </ul>
 
     </nav>
     <div class="container">
-       
-            <div>
-                <a href="http://127.0.0.1:8000/newshipment" class="button1">NEW SHIPMENT</a>
-            </div>
-            <div>
-                <a href="#" class="button2">GET DATA</a>
-            </div>
-        
+
+        <div>
+            <a href="http://127.0.0.1:8000/newshipment" class="button1">NEW SHIPMENT</a>
+        </div>
+        <div>
+            <a href="#" class="button2">GET DATA</a>
+        </div>
+
     </div>
     <p id="value" style="display: none;">{{token}}</p>
-    <script> 
-      var key = document.getElementById("value").innerText;
-      console.log(key)
-      localStorage.setItem('token', key);
-      </script>
+    <script>
+        if (localStorage.getItem("token") === null) {
+            window.location.href = "/login";
+        }
+    </script>
+
 </body>
+<script src="../static/js/dashboard.js"></script>
 
 </html>
