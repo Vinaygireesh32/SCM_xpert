@@ -14,6 +14,7 @@ from execution.devicedata import web as devicedata
 from execution.dashboard import web as dashboard
 from execution.myaccount import web as myaccount
 from execution.adminacc import web as adminacc
+from execution.userlist import web as userlist
 
 
 
@@ -36,3 +37,4 @@ app.include_router(devicedata)
 app.include_router(dashboard)
 app.include_router(myaccount)
 app.include_router(adminacc)
+app.include_router(userlist)

@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" , initial-scale="1.0">
     <title>
-        Devicedata
+        Users
     </title>
-    <script src="../static/js/devicedata.js"></script>
-    <link rel="stylesheet" href="/static/css/devicedata.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/userlist.css">
+    <script src="../static/js/userlist.js"></script>
 </head>
 
 <body>
@@ -21,66 +22,65 @@
                 </div>
                 <ul>
                     <li><a href="http://127.0.0.1:8000/admin">Dashboard</a></li>
-                    <li class="active"><a href="http://127.0.0.1:8000/devicedata">Devicedata</a></li>
-                    <li><a href="http://127.0.0.1:8000/userlist">Users</a></li>
+                    <li><a href="http://127.0.0.1:8000/devicedata">Device Data</a></li>
+                    <li class="active"><a href="http://127.0.0.1:8000/userlist">Users</a></li>
                     <li><a href="http://127.0.0.1:8000/adminacc">My Account</a></li>
-                    
+
                     <li><a href="#" onclick="logout()">Logout</a></li>
             </nav>
         </div>
 
 
         <!-- ----------------------------------------------- -->
-        <div class="device">
+        <div class="user">
             <h1>
-                Device ID
+                Users List
             </h1>
-            <select type="text" id="device_id" placeholder="device_id" required>
-                <option value="">Select Device Id</option>
-                <option value="1156053076">1156053076</option>
-                <option value="1156053077">1156053077</option>
-                <option value="1156053078">1156053078</option>
-            </select>
-            <button class="btn" id="submit">Get Data</button>
-        </div>
+            <input class="select" type="text" id="username" placeholder="Search by Username">
+            <button class="src" id="submit">Search</button>
 
+        </div>
         <div class="tb">
             <table>
                 <thead>
-                <tr id="header">
-                    <th>Device Id</th>
-                    <th>Battery Level</th>
-                    <th>Sensor Temperature</th>
-                    <th>Route From</th>
-                    <th>Route To</th>
-                </tr>
-            </thead>
-            <tbody id="tablebody">
+                    <tr id="header">
+                        <th>Select</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
 
-            </tbody>
-                
+                    {% for user in data %}
+                    <tr>
+                        <td><input type="checkbox" class="user-checkbox"></td>
+                        <td class="username">{{ user.username }}</td>
+                        <td id="email_id">{{ user.email }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
+            <div>
+                <button class="btn" id="makeAdmin">Make Admin</button>
+            </div>
         </div>
         <p id="value" style="display: none;">{{token}}</p>
         <script>
             if (localStorage.getItem("token") === null) {
                 window.location.href = "/login";
             }
-    
+
             function logout() {
                 // Clear user-related data from localStorage
                 localStorage.removeItem("token");
                 sessionStorage.removeItem("username");
                 sessionStorage.removeItem("email");
                 sessionStorage.removeItem("role");
-    
+
                 // Redirect to the login page or any other desired destination
                 window.location.href = "/login";
             }
         </script>
-
-
-
 </body>
 
 </html>

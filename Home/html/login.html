@@ -40,16 +40,16 @@
         <i class='bx bxs-lock-alt'></i>
       </div>
       <div class="remember-forgot">
-        <label><input type="checkbox">Remember Me</label>
+        <!-- <label><input type="checkbox">Remember Me</label> -->
         <a href="http://127.0.0.1:8000/forgot">Forgot Password</a>
       </div>
 
       <div>
-        <h2 id="status" style="color: #000000;"></h2>
+        <h5 id="status" style="color: #ffffffc9;"></h5>
         <input type="text" id="generated-captcha" readonly>
       </div>
 
-      <div>
+      <div class="clscaptcha">
         <input type="text" id="entered-captcha" placeholder="Enter the captcha">
         <button type="button" onclick="generate()"></button>
         <i class="fa fa-refresh" onclick="generate()" id="gen" aria-hidden="true"></i>

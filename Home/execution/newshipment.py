@@ -1,17 +1,16 @@
-from fastapi import APIRouter,Request,Depends
+from fastapi import APIRouter, Request, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execute.execute import *
-from execution.login import*
+from execution.login import *
 from pydantic import BaseModel
 
 web = APIRouter()
 
-html = Jinja2Templates(directory = "html")
-web.mount("/static", StaticFiles(directory="static"), name = "static")
+html = Jinja2Templates(directory="html")
+web.mount("/static", StaticFiles(directory="static"), name="static")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
 
 
 class Newshipment(BaseModel):
@@ -29,27 +28,28 @@ class Newshipment(BaseModel):
     description: str
 
 
-
 @web.get("/newshipment")
-def NewShipment(newdata : Request):
-    return html.TemplateResponse("newshipment.html", {"request": newdata})
+def NewShipment(newdata: Request):
+    return html.TemplateResponse("newshipment.html", {"request": newdata, "token": "your_token_here"})
+
 
 @web.post("/newshipment")
-def NewShipment(request: Request, newship : Newshipment, token: str = Depends(oauth2_scheme)):
-    scmdb ={
-        # "email"         : token["email"],
+def NewShipment(request: Request, newship: Newshipment, token: str = Depends(oauth2_scheme)):
+    # res=decode_token(oauth2_scheme)
+    scmdb = {
+        # "username":newship.username,
         "shipmentnumber": newship.shipment_num,
         "containerumber": newship.container_num,
-        "routedetails"  : newship.route_details,
-        "goodstype"     : newship.goods_type,
-        "device"        : newship.device,
-        "expecteddeliverydate": newship.expected_delivery_date, 
-        "ponumber"      : newship.po_num,
+        "routedetails": newship.route_details,
+        "goodstype": newship.goods_type,
+        "device": newship.device,
+        "expecteddeliverydate": newship.expected_delivery_date,
+        "ponumber": newship.po_num,
         "deliverynumber": newship.delivery_num,
-        "ndcnumber"     : newship.ndc_num,
-        "batchid"       : newship.batch_id,
+        "ndcnumber": newship.ndc_num,
+        "batchid": newship.batch_id,
         "serialnumberofgoods": newship.serial_num,
         "shipmentdescription": newship.description
     }
-    
+
     shipment_cred.insert_one(scmdb)

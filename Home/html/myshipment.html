@@ -7,8 +7,9 @@
     <title>
         My Shipment
     </title>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/myshipment.css">
+    <script src="../static/js/myshipment.js"></script>
 </head>
 
 <body>
@@ -20,17 +21,16 @@
                 </div>
                 <ul>
                     <li><a href="http://127.0.0.1:8000/dashboard">Dashboard</a></li>
-                    <!-- <li><a  href="#">Dashboard</a></li> -->
-                    <li class="active"><a>My Shipments</a></li>
+                    <li class="active"><a href="http://127.0.0.1:8000/myshipment">My Shipments</a></li>
                     <li><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
                     <li><a href="http://127.0.0.1:8000/myaccount">My Account</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
             </nav>
         </div>
 
 
         <!-- ----------------------------------------------- -->
-        
+
         <div class="tb">
             <table>
                 <tr id="header">
@@ -65,11 +65,22 @@
             </table>
         </div>
         <p id="value" style="display: none;">{{token}}</p>
-    <script>
-        if (localStorage.getItem("token") === null) {
-            window.location.href = "/login";
-        }
-    </script>
+        <script>
+            if (localStorage.getItem("token") === null) {
+                window.location.href = "/login";
+            }
+
+            function logout() {
+                // Clear user-related data from localStorage
+                localStorage.removeItem("token");
+                sessionStorage.removeItem("username");
+                sessionStorage.removeItem("email");
+                sessionStorage.removeItem("role");
+
+                // Redirect to the login page or any other desired destination
+                window.location.href = "/login";
+            }
+        </script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
   <div class="main">
     <div class="navbar">
         <div class="icon">
@@ -23,10 +24,15 @@
             </ul>
         </div>
     </div>
-  
+  <div class="page">
   <div class="wrapper" >
     <form action="/signup" method="post">
       <h1>SignUp</h1>
+      {% if error_message %}
+      <div class="error-message">
+        <p>{{ error_message }}</p>
+      </div>
+      {% endif %}
       <div class="input-box">
         <input type="text" name="Username" placeholder="Username" required>
         <i class='bx bxs-user'></i>
@@ -51,6 +57,16 @@
         <p>Dont have an account? <a href="http://127.0.0.1:8000/login">Login</a></p>
       </div>
     </form>
+  </div>
+<div class="limits">
+    <h2>Password Limitations</h2>
+    <p>-At least one alphabet character</p>
+    <p>-At least one digit</p>
+    <p>-At least one special character from the specified list</p>
+    <p>-Minimum of 8 characters, combining alphabets, digits, and special characters</p>
+
+    
+  </div>
 </div>
   </div>
 </body>

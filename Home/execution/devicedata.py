@@ -3,11 +3,16 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execute.execute import *
 from execution.login import*
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import Request
+from fastapi.security import OAuth2PasswordBearer
 
 web = APIRouter()
 
 html = Jinja2Templates(directory = "html")
 web.mount("/static", StaticFiles(directory="static"), name = "static")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+
 
 @web.get("/devicedata")
 def details(request : Request):
@@ -27,3 +32,6 @@ async def get_device_data(request: Request, token: str = Depends(oauth2_scheme))
                 return JSONResponse(content={"data": shipment}, status_code=200)
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
+    
+
+  

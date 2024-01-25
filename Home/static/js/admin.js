@@ -38,13 +38,7 @@ if (localStorage.getItem("token") === null) {
   }).call(this);
 ////////////////////////////////////////////////////////////////////// 
 
-function logout() {
-  localStorage.removeItem("token");
-  sessionStorage.removeItem("username");
-  sessionStorage.removeItem("email");
-  sessionStorage.removeItem("role");
-  window.location.href= "/login";
-}
+
 
 
 

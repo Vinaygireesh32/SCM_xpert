@@ -6,7 +6,7 @@ import json
 from pymongo import MongoClient
  
 # Connect to MongoDB
-User = MongoClient('mongodb://localhost:27017')  # Replace with your MongoDB connection string
+User = MongoClient('mongodb+srv://vinaygireesh2001:7Ou9h3TZz9YZ4E6V@cluster0.8nikeyx.mongodb.net/')  # Replace with your MongoDB connection string
 DB = User['scm_xpert']  # Replace with your MongoDB database name
 device_data = DB['DeviceData']  
 config = {'bootstrap.servers': 'localhost:9092',

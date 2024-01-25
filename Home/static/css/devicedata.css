@@ -10,6 +10,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: url(/static/admin.jpg) no-repeat;
+  backdrop-filter: blur(2px);
   background-size: cover;
   background-position: center;
 }
@@ -71,7 +72,9 @@ background : rgb(0, 0, 0);
         /* font-weight: 1000;  */
     }
     nav.sidebar ul li.active:hover a{
-      color: #ffffff;     
+      /* color: #ffffff;      */
+      color: transparent;
+      text-shadow: none;
     }
     nav.sidebar ul li.active:hover{
       display: flex;
@@ -96,10 +99,11 @@ ul li{
 ul li a{
   
   text-decoration: none;
-  font-size: 20px;
-  color: #000000;
+  font-size: 22px;
+  color: #ffffff;
+  text-shadow: 0px 0px 20px #02476e, 0px 0px 20px #02476e;
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 1000;
+  font-weight: 900;
   transition: 0.2s ease-in-out;
   padding-left: 40px;
 }
@@ -109,9 +113,11 @@ ul li:hover {
   border-radius: 5px; 
   
   
+  
 } 
 ul li:hover a{
   color: #02476e;
+  text-shadow: none;
 }
 
 ul li {
@@ -128,7 +134,7 @@ ul li {
   display: flex;
   position: absolute;
   top: 90px;
-  margin-left: -399px;
+  left: 475px;
   width: 1050px;
   height: 70px;
   overflow-y: auto;

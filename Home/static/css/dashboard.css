@@ -124,16 +124,17 @@ ul li {
 display: flex;
 /* margin-left: -50px; */
 
-height: 872px;
+height: 817px;
 width: 100%;
 margin-left: 260px;
 align-items: center;
-background-color: #0000006e;
+/* background-color: #0000006e; */
   
 }
 
 .button1{
   color: white;
+  text-shadow: 0 0 10px #000000, 0 10px 20px #000000;
   width: 160px;
   height: 40px;
   margin-top: 600px;
@@ -162,9 +163,9 @@ background-color: #0000006e;
   text-shadow: 0 0 20px #0Dfffb, 0 0 40px #00B1bc;
 }
 
-.button2{
-  color: white;
-
+.button2{ 
+  color: #ffffff;
+  text-shadow: 0 0 10px #000000, 0 10px 20px #000000;
   margin-top: 600px;
   margin-left: 300px;
   font-size: 30px;
@@ -185,7 +186,7 @@ background-color: #0000006e;
 }
 
 .button2:hover{
-  background-color: #ffffff00;
+  /* background-color: #ffffff00; */
   font-size: 66px;
   margin-left: 100px;
   color: rgb(0, 0, 0);

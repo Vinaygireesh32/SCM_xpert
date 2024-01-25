@@ -10,6 +10,7 @@
     align-items: center;
     min-height: 100vh;
     background: url(/static/new.jpg) no-repeat;
+    backdrop-filter: blur(2px);
     background-size: cover;
     background-position: center;
   }
@@ -141,6 +142,13 @@
     inset 120px 100px 80px #7b5ec9d2,  /* inner right cyan short */
     inset -80px -120px 300px #7b5ec9d2,  /* inner left magenta broad */
     inset -120px 100px 100px #7b5ec9d2;
+}
+.container .error-message{
+  color: #ffffff;
+  font-size: 18px;
+  ;
+  margin-left: 320px;
+
 }
 .container h1{
     top: -10px;

@@ -1,6 +1,6 @@
 import pymongo
  
-MONGO_URI = 'mongodb://localhost:27017/'
+MONGO_URI = 'mongodb+srv://vinaygireesh2001:7Ou9h3TZz9YZ4E6V@cluster0.8nikeyx.mongodb.net/'
  
 User = pymongo.MongoClient(MONGO_URI)
  

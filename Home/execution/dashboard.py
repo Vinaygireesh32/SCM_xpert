@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
-
+from fastapi import Depends
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from execute.execute import *
@@ -20,5 +21,5 @@ ALGORITHM = "HS256"
 
 @web.get("/dashboard")
 def details(request: Request):
-
     return html.TemplateResponse("dashboard.html", { "request" : request})
+

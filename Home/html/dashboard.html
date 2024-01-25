@@ -21,23 +21,36 @@
 
             <li><a href="http://127.0.0.1:8000/newshipment">New Shipment</a></li>
             <li><a href="http://127.0.0.1:8000/myaccount">My Account</a></li>
-            <li><a href="/html/login.html">Logout</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+
         </ul>
 
     </nav>
     <div class="container">
-
         <div>
             <a href="http://127.0.0.1:8000/newshipment" class="button1">NEW SHIPMENT</a>
         </div>
         <div>
-            <a href="#" class="button2">GET DATA</a>
+            <a href="" id="myButton" class="button2" title="You are not Authorized">GET DATA</a>
         </div>
-
+    
+        <!-- Display area for retrieved data -->
+        <div id="data-display" style="margin-top: 20px;"></div>
     </div>
     <p id="value" style="display: none;">{{token}}</p>
     <script>
         if (localStorage.getItem("token") === null) {
+        window.location.href = "/login";
+      }
+
+        function logout() {
+            // Clear user-related data from localStorage
+            localStorage.removeItem("token");
+            sessionStorage.removeItem("username");
+            sessionStorage.removeItem("email");
+            sessionStorage.removeItem("role");
+
+            // Redirect to the login page or any other desired destination
             window.location.href = "/login";
         }
     </script>
@@ -45,4 +58,8 @@
 </body>
 <script src="../static/js/dashboard.js"></script>
 
-</html>
+</html> 
+
+
+
+

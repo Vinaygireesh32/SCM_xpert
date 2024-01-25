@@ -2,80 +2,76 @@
 <html lang="en">
 
 <head>
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="/static/css/forgot.css">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="/static/css/forgot.css">
 </head>
 
 <body>
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-                <h2 class="logo">SCMxpert</h2>
-            </div>
+  <div class="main">
+    <div class="navbar">
+      <div class="icon">
+        <h2 class="logo">SCMxpert</h2>
+      </div>
 
-            <div class="menu">
-                <ul>
-                    <li><a href="http://127.0.0.1:8000/home">Home</a></li>
-                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+      <div class="menu">
+        <ul>
+          <li><a href="http://127.0.0.1:8000/home">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/about">About</a></li>
 
-                </ul>
-            </div>
-            <div class="row">
-                <h1>Password Reset</h1>
-                <form id="resetForm">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <button type="button" onclick="requestReset()">Request Reset</button>
-                </form>
+          <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
 
-               
-                <form id="resetPasswordForm" style="display: none;">
-                    <label for="newPassword">New Password:</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
-                    <button type="button" onclick="resetPassword()">Reset Password</button>
-                </form>
+        </ul>
+      </div>
+    </div>
 
-                <script>
-                    // Function to handle password reset request
-                    function requestReset() {
-                        var email = document.getElementById('email').value;
+    <div class="wrapper">
+      <form method="post" action="/forgot">
+        <h1>Reset</h1>
+        {% if error_message %}
+        <div class="error-message">
+          <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
 
-                        // Send the email to the server to request a password reset
-                        // This can be done using an AJAX request (e.g., with fetch)
-                        // For simplicity, we'll log a message to the console
-                        console.log('Requesting password reset for email:', email);
-
-                        // Display the reset password form
-                        document.getElementById('resetForm').style.display = 'none';
-                        document.getElementById('resetPasswordForm').style.display = 'block';
-                    }
-
-                    // Function to handle password reset with token
-                    function resetPassword() {
-                        var newPassword = document.getElementById('newPassword').value;
-
-                        // Send the newPassword and token to the server to reset the password
-                        // This can be done using an AJAX request (e.g., with fetch)
-                        // For simplicity, we'll log a message to the console
-                        console.log('Resetting password with new password:', newPassword);
-
-                        // Display a success message or redirect the user to the login page
-                        alert('Password reset successful');
-
-                        // Optionally, redirect the user to the login page
-                        window.location.href = '/login';
-                    }
-                </script>
-            </div>
-
+        {% if success_message %}
+        <div class="success-message">
+          <p>{{ success_message }}</p>
+        </div>
+        {% endif %}
+        <div class="input-box">
+          <input type="text" id="email" name="email" placeholder="Email" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+          <i class='bx bxs-lock-alt'></i>
         </div>
 
+        <button type="submit" id="submit" class="btn">Update </button>
+        <div class="register-link">
+          <p>Back to Login? <a href="http://127.0.0.1:8000/login">Login</a></p>
+        </div>
 
+      </form>
     </div>
+    <div class="limits">
+      <h2>Password Limitations</h2>
+      <p>-At least one alphabet character</p>
+      <p>-At least one digit</p>
+      <p>-At least one special character from the specified list</p>
+      <p>-Minimum of 8 characters, combining alphabets, digits, and special characters</p>
+  
+      
     </div>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+  </div>
+
+  <script src="../static/js/forgot.js"></script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 
 </html>

@@ -18,10 +18,9 @@
                 <ul>
                     <li><a href="http://127.0.0.1:8000/admin">Dashboard</a></li>
                     <li><a href="http://127.0.0.1:8000/devicedata">Device Data</a></li>
-
+                    <li><a href="http://127.0.0.1:8000/userlist">Users</a></li>
                     <li class="active"><a href="http://127.0.0.1:8000/adminacc">My Account</a> </li>
-
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
             </nav>
         </div>
         <div class="wrapper">
@@ -42,7 +41,18 @@
 
     <p id="value" style="display: none;">{{token}}</p>
     <script>
-        if (localStorage.getItem("token") === null) {
+       if (localStorage.getItem("token") === null) {
+        window.location.href = "/login";
+      }
+
+        function logout() {
+            // Clear user-related data from localStorage
+            localStorage.removeItem("token");
+            sessionStorage.removeItem("username");
+            sessionStorage.removeItem("email");
+            sessionStorage.removeItem("role");
+
+            // Redirect to the login page or any other desired destination
             window.location.href = "/login";
         }
     </script>
