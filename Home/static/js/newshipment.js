@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("myForm").reset();
 
           // Display success message
-          $("#error-message").text("Submitted successfully!");
+          $("#error-message").text("Your Shipment has been done !");
           $("#error-message").css({
             visibility: "visible",
             color: "white"

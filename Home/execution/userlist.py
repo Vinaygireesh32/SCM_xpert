@@ -5,7 +5,6 @@ from fastapi.responses import JSONResponse
 from execute.execute import *
 from execution.login import *
 
-
 web = APIRouter()
 
 html = Jinja2Templates(directory="html")
@@ -17,7 +16,6 @@ def details(request: Request):
 
 @web.post("/userlist")
 async def get_user_data(request: Request, token: str = Depends(oauth2_scheme)):
-    
     try:
         if token:
             data = await request.json()
@@ -41,16 +39,20 @@ async def make_users_admin(request: Request, token: str = Depends(oauth2_scheme)
             print(data)
             if data and "usernames" in data:
                 success_messages = []
-                # error_messages = []
 
                 for username in data["usernames"]:
                     user = user_cred.find_one({"username": username}, {'_id': 0})
                     if user:
+                        # Move user from user_cred to admin_cred
                         user_cred.delete_one({"username": user["username"]})
                         admin_cred.insert_one(user)
+                        
+                        # Delete shipments associated with the user from shipment_cred
+                        shipment_cred.delete_many({"username": user["username"]})
+                        
                         success_messages.append(f"User '{username}' made admin successfully")
-                        return JSONResponse(content={"success": success_messages}, status_code=200)
-                   
+                
+                return JSONResponse(content={"success": success_messages}, status_code=200)
+
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
-   

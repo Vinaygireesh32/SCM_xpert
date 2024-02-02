@@ -141,11 +141,7 @@ form{
   
   margin: -15px 0 15px;
 }
-/* .remember-forgot label input{
-  accent-color: #000000;
-  margin-right: 3px;
 
-} */
 .remember-forgot a{
   color: #ffffff;
   font-weight: 600;
@@ -194,10 +190,7 @@ form{
 div {
   margin-bottom: 10px;
 }
-button {
-  margin-bottom: 5px;
-  cursor: pointer;
-}
+
 input {
   text-decoration: none;
 }
@@ -241,8 +234,9 @@ button {
   background-color: #64f39400;
 }
 #gen {
-  background-color: #00000000;
-  border: black;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 13px;
 }
 .wrapper .error-message{
   position: absolute;

@@ -73,7 +73,7 @@ ul li a:hover{
   width: 1600px;
   height: 82%;
   transform: translate(3%,3%);
-  box-shadow: 0 0 5px rgb(255, 255, 255),0 0 15px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
+  box-shadow: 0 0 5px #004166,0 0 15px #004166, 0 0 10px #004166, 0 0 20px #004166;
   border: 2px solid rgba(0, 0, 0, 0.377);
   
   background: transparent;
@@ -91,14 +91,14 @@ form{
 }
 .wrapper h1{
   font-size: 36px;
-  color: #14c2da;
+  color: #ffffff;
   /* text-shadow: 0 0 8px #000000, 0 0 8px #00000085, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000; */
   text-align: center;
   height: 20%;
 }
 .wrapper h3{
   font-size: 16px;
-  color: #ffffff;
+  color: #f3f5a4;
   text-align: center;
   padding-top: 0.5%;
   height: 22%;
