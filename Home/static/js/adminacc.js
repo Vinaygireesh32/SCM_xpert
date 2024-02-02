@@ -2,7 +2,6 @@ if (localStorage.getItem("token") === null) {
     window.location.href = "/login";
 }
 
-
 (function () {
     $(function () {
         var collapseMyMenu, expandMyMenu, hideMenuTexts, showMenuTexts;

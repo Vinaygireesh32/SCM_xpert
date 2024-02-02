@@ -79,8 +79,7 @@ background : rgb(0, 0, 0);
     nav.sidebar ul li.active:hover{
       display: flex;
       color: rgb(255, 255, 255);
-      /* background-color: rgba(28, 71, 136, 0.925); */
-      /* background-color: #f35525; */
+     
   
     }
 nav.sidebar ul li.active a.expandable {

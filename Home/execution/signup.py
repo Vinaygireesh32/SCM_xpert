@@ -1,5 +1,5 @@
 import re
-from fastapi import APIRouter, Request, Form, HTTPException
+from fastapi import APIRouter, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execute.execute import *
@@ -55,4 +55,5 @@ def Signup(request: Request, Username: str = Form(), Email: str = Form(), Create
     }
 
     user_cred.insert_one(scmsign)
-    return html.TemplateResponse("signup.html", {"request": request, "error_message": None})
+    error_message="Succesully Registered"
+    return html.TemplateResponse("signup.html", {"request": request, "error_message": error_message })

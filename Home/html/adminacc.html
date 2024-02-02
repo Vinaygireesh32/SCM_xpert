@@ -3,6 +3,7 @@
 
 <head>
     <title>Admin Profile Card</title>
+    <link rel="icon" href="/static/logo.png" type="image/icon type">
     <link rel="stylesheet" href="/static/css/adminacc.css">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
         integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
@@ -41,9 +42,7 @@
 
     <p id="value" style="display: none;">{{token}}</p>
     <script>
-       if (localStorage.getItem("token") === null) {
-        window.location.href = "/login";
-      }
+     
 
         function logout() {
             // Clear user-related data from localStorage

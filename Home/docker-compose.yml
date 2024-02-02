@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  # main application service
+  app:
+    image: backendapp:latest  # Use custom image from Docker Hub
+    ports:
+      - "8000:8000"
+    environment:
+      - FRONTEND_URL=127.0.0.1:80
+
+  # Frontend service
+  frontend:
+    image: uiapp:latest  # Use custom UI app image from Docker Hub
+    ports:
+      - "80:80"
+
+  # Zookeeper for Kafka
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'  # Use Bitnami Zookeeper image
+    ports:
+      - "2181:2181"
+    depends_on:
+      - app
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  # Kafka service
+  kafka:
+    image: 'bitnami/kafka:latest'  # Use Bitnami Kafka image
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_HEAP_OPTS=-Xmx1G
+
+  # Server service
+  server:
+    image: socketapp:latest  # Use custom socket app image from Docker Hub
+    ports:
+      - "12345:12345"
+    depends_on:
+      - kafka
+
+  # Producer service
+  producer:
+    image: producerapp:latest  # Use custom producer app image from Docker Hub
+    environment:
+      - bootstrap_servers=kafka:9092
+      - host=server
+    depends_on:
+      - server
+      - kafka
+
+  # Consumer service
+  consumer:
+    image: consumerapp:latest  # Use custom consumer app image from Docker Hub
+    environment:
+      - bootstrap_servers=kafka:9092
+    depends_on:
+      - producer

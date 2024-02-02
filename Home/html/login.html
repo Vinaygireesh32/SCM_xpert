@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="icon" href="/static/logo.png" type="image/icon type">
   <link rel="stylesheet" href="/static/css/login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,7 +31,9 @@
 
   <div class="wrapper">
     <form onsubmit="return validateForm()">
+      
       <h1>Login</h1>
+      <div class="error-message" style="color: rgba(0, 0, 0, 0.801); visibility: hidden;"></div>
       <div class="input-box">
         <input type="text" id="username" name="username" placeholder="Username" required>
         <i class='bx bxs-user'></i>
@@ -62,12 +65,7 @@
     </form>
 
     <p id="value" style="display: none;">{{token}}</p>
-    <script> 
-      var key = document.getElementById("value").innerText;
-      console.log(key)
-      localStorage.setItem('token', key);
-      </script>
-   
+    
   </div>
 </body>
 <script src="../static/js/login.js"></script>

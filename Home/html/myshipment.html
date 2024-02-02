@@ -7,7 +7,9 @@
     <title>
         My Shipment
     </title>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link rel="icon" href="/static/logo.png" type="image/icon type">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/myshipment.css">
     <script src="../static/js/myshipment.js"></script>
 </head>
@@ -33,54 +35,33 @@
 
         <div class="tb">
             <table>
-                <tr id="header">
-                    <th>Shipment Number</th>
-                    <th>Container Number</th>
-                    <th>Route Details</th>
-                    <th>Goods Type</th>
-                    <th>Device</th>
-                    <th>Expected Delivery Date</th>
-                    <th>PO Number</th>
-                    <th>Delivery Number</th>
-                    <th>NDC Number</th>
-                    <th>Batch ID</th>
-                    <th>Serial Number Of Goods</th>
-                </tr>
-                {% for v in myship %}
-                <tr>
-                    <td>{{v.shipmentnumber}}</td>
-                    <td>{{v.containerumber}}</td>
-                    <td>{{v.routedetails}}</td>
-                    <td>{{v.goodstype}}</td>
-                    <td>{{v.device}}</td>
-                    <td>{{v.expecteddeliverydate}}</td>
-                    <td>{{v.ponumber}}</td>
-                    <td>{{v.deliverynumber}}</td>
-                    <td>{{v.ndcnumber}}</td>
-                    <td>{{v.batchid}}</td>
-                    <td>{{v.serialnumberofgoods}}</td>
+                <thead>
 
-                </tr>
-                {% endfor %}
+
+                    <tr id="header">
+                        <th>Shipment Number</th>
+                        <th>Container Number</th>
+                        <th>Route Details</th>
+                        <th>Goods Type</th>
+                        <th>Device</th>
+                        <th>Expected Delivery Date</th>
+                        <th>PO Number</th>
+                        <th>Delivery Number</th>
+                        <th>NDC Number</th>
+                        <th>Batch ID</th>
+                        <th>Serial Number Of Goods</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+
+
+                </tbody>
+
             </table>
         </div>
         <p id="value" style="display: none;">{{token}}</p>
-        <script>
-            if (localStorage.getItem("token") === null) {
-                window.location.href = "/login";
-            }
-
-            function logout() {
-                // Clear user-related data from localStorage
-                localStorage.removeItem("token");
-                sessionStorage.removeItem("username");
-                sessionStorage.removeItem("email");
-                sessionStorage.removeItem("role");
-
-                // Redirect to the login page or any other desired destination
-                window.location.href = "/login";
-            }
-        </script>
+        
 </body>
 
 </html>

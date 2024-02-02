@@ -5,12 +5,6 @@
   font-family: "Poppins", sans-serif;
   align-items: center;
 }
-/* .main{
-  background: fixed;
-  background-position: center;
-  background-size: cover;
-  height: 10vh;
-} */
 
 body{
   
@@ -97,20 +91,20 @@ form{
 }
 .wrapper h1{
   font-size: 36px;
-  color: #004166;
+  color: #14c2da;
   /* text-shadow: 0 0 8px #000000, 0 0 8px #00000085, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000; */
   text-align: center;
   height: 20%;
 }
 .wrapper h3{
   font-size: 16px;
-  color: #000000b6;
+  color: #ffffff;
   text-align: center;
   padding-top: 0.5%;
   height: 22%;
 }
 .wrapper span{
-  background: rgb(0, 0, 0);
+  background: #ffffffb6;
   height: 2px;
   width: 220px;
   position: absolute;

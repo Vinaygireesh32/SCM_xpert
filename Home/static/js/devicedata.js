@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then(response => {
-                    console.log(response);
                     let shipment = "";
 
                     for (let shipment_no = 0; shipment_no < response.data.length; shipment_no++) {

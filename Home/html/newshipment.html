@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Shipment</title>
+    <link rel="icon" href="/static/logo.png" type="image/icon type">
     <link rel="stylesheet" href="/static/css/newshipment.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
@@ -24,28 +25,33 @@
                     <li><a href="#" onclick="logout()">Logout</a></li>
             </nav>
         </div>
-        
+
         <div class="container">
             <div id="error-message" class="error-message" style="visibility: hidden;"></div>
 
             <form id="myForm" action="">
                 <h1>New Shipment</h1>
+                {% if error_message %}
+                <div class="error-message">
+                    <p>{{ error_message }}</p>
+                </div>
+                {% endif %}
                 <div class="fields">
                     <div class="input-field">
                         <label>Shipment Number</label>
-                        <input type="text" id="shipment_num" required>
+                        <input type="number" id="shipment_num" required pattern="\d{7}" oninput="validateInput(this)">
                     </div>
                     <div class="input-field">
                         <label>Container Number</label>
-                        <input type="text" id="container_num" required>
+                        <input type="number" id="container_num" required>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="input-field">
                         <label>Route Details</label>
-                        
+
                         <select name="" id="route_details">
-                            <option >Select Route Details</option>
+                            <option>Select Route Details</option>
                             <option value="Tirupati">Tirupati</option>
                             <option value="Hyderabad">Hyderabad</option>
                             <option value="Bangalore">Bangalore</option>
@@ -53,9 +59,9 @@
                     </div>
                     <div class="input-field">
                         <label>Goods Type</label>
-                       
+
                         <select name="" id="goods_type">
-                            <option >Select Goods Type</option>
+                            <option>Select Goods Type</option>
                             <option value="IoT">IoT</option>
                             <option value="Electrical">Electrical</option>
                             <option value="Hardware">Hardware</option>
@@ -65,9 +71,9 @@
                 <div class="fields">
                     <div class="input-field">
                         <label>Device</label>
-                        
+
                         <select name="" id="device">
-                            <option >Select Device</option>
+                            <option>Select Device</option>
                             <option value="678">678</option>
                             <option value="679">679</option>
                             <option value="680">680</option>
@@ -81,27 +87,27 @@
                 <div class="fields">
                     <div class="input-field">
                         <label>PO Number</label>
-                        <input type="text" id="po_num" required>
+                        <input type="number" id="po_num" required>
                     </div>
                     <div class="input-field">
                         <label>Delivery Number</label>
-                        <input type="text" id="delivery_num" required>
+                        <input type="number" id="delivery_num" required>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="input-field">
                         <label>NDC Number</label>
-                        <input type="text" id="ndc_num" required>
+                        <input type="number" id="ndc_num" required>
                     </div>
                     <div class="input-field">
                         <label>Batch ID</label>
-                        <input type="text" id="batch_id" required>
+                        <input type="number" id="batch_id" required>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="input-field">
                         <label>Serial Number Of Goods</label>
-                        <input type="text" id="serial_num" required>
+                        <input type="number" id="serial_num" required>
                     </div>
                     <div class="input-field">
                         <label>Shipment Description</label>
@@ -113,15 +119,11 @@
                     <input type="reset" value="Clear">
 
                     <input href="http://127.0.0.1:8000/newshipment" type="submit" id="submit" value="Submit">
-                 </div>
+                </div>
         </div>
     </div>
     <p id="value" style="display: none;">{{token}}</p>
     <script>
-        if (localStorage.getItem("token") === null) {
-        window.location.href = "/login";
-      }
-
         function logout() {
             // Clear user-related data from localStorage
             localStorage.removeItem("token");
@@ -131,6 +133,15 @@
 
             // Redirect to the login page or any other desired destination
             window.location.href = "/login";
+        }
+        function validateInput(input) {
+            // Remove non-digit characters
+            let inputValue = input.value.replace(/\D/g, '');
+            // Limit the input to 7 digits
+            inputValue = inputValue.substring(0, 7);
+            // Update the input value
+            input.value = inputValue;
+            
         }
     </script>
 

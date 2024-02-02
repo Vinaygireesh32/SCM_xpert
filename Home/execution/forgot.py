@@ -1,11 +1,10 @@
 import re
-from fastapi import APIRouter, Request, Form, HTTPException
+from fastapi import APIRouter, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from passlib.context import CryptContext
 from execute.execute import *
 from execution.login import *
-from passlib.hash import bcrypt  # Import the bcrypt hashing method
 
 web = APIRouter()
 
@@ -30,7 +29,7 @@ def reset_password(request: Request, email: str = Form(...), password: str = For
 
     # Check if passwords match
     if password != confirm_password:
-        error_message = "Passwords don't match"
+        error_message = "Passwords doesn't match"
         return html.TemplateResponse("forgot.html", {"request": request, "error_message": error_message})
 
     # Validate password

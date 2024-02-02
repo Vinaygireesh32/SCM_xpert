@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execute.execute import *
 from execution.login import *
+
 from pydantic import BaseModel
 
 web = APIRouter()
@@ -29,27 +30,37 @@ class Newshipment(BaseModel):
 
 
 @web.get("/newshipment")
-def NewShipment(newdata: Request):
+def new_shipment(newdata: Request):
     return html.TemplateResponse("newshipment.html", {"request": newdata, "token": "your_token_here"})
 
 
 @web.post("/newshipment")
-def NewShipment(request: Request, newship: Newshipment, token: str = Depends(oauth2_scheme)):
-    # res=decode_token(oauth2_scheme)
+def new_shipment(request: Request, new_ship: Newshipment, token: str = Depends(oauth2_scheme)):
+    decode = decode_token(token)
+
+    # Validate shipment number length
+    if len(new_ship.shipment_num) != 7:
+        raise HTTPException(status_code=400, detail="Shipment number must be exactly 7 digits")
+
+    # Check if the shipment number already exists
+    existing_shipment = shipment_cred.find_one({"shipmentnumber": new_ship.shipment_num})
+    if existing_shipment is not None:
+        raise HTTPException(status_code=400, detail="Shipment number already exists")
+
     scmdb = {
-        # "username":newship.username,
-        "shipmentnumber": newship.shipment_num,
-        "containerumber": newship.container_num,
-        "routedetails": newship.route_details,
-        "goodstype": newship.goods_type,
-        "device": newship.device,
-        "expecteddeliverydate": newship.expected_delivery_date,
-        "ponumber": newship.po_num,
-        "deliverynumber": newship.delivery_num,
-        "ndcnumber": newship.ndc_num,
-        "batchid": newship.batch_id,
-        "serialnumberofgoods": newship.serial_num,
-        "shipmentdescription": newship.description
+        "username": decode["sub"],
+        "shipmentnumber": new_ship.shipment_num,
+        "containerumber": new_ship.container_num,
+        "routedetails": new_ship.route_details,
+        "goodstype": new_ship.goods_type,
+        "device": new_ship.device,
+        "expecteddeliverydate": new_ship.expected_delivery_date,
+        "ponumber": new_ship.po_num,
+        "deliverynumber": new_ship.delivery_num,
+        "ndcnumber": new_ship.ndc_num,
+        "batchid": new_ship.batch_id,
+        "serialnumberofgoods": new_ship.serial_num,
+        "shipmentdescription": new_ship.description
     }
 
     shipment_cred.insert_one(scmdb)

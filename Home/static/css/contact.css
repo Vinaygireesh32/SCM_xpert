@@ -5,13 +5,6 @@
   font-family: "Poppins", sans-serif;
   align-items: center;
 }
-/* .main{
-  background: fixed;
-  background-image:url(/about.jpeg);
-  background-position: center;
-  background-size: cover;
-  height: 10vh;
-} */
 body{
   /* display: flex; */
   
@@ -103,19 +96,13 @@ form{
 
 .wrapper h1{
   font-size: 36px;
-  color: #004166;
+  color: #14c2da;
   /* text-shadow: 0 0 8px #000000, 0 0 8px #00000085, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000, 0 0 8px #000000; */
   text-align: center;
   height: 20%;
 }
 
-.wrapper span{
-  background: rgb(0, 0, 0);
-  height: 2px;
-  width: 220px;
-  position: absolute;
-  left: 43%;
-}
+
 .wrapper p{
   
   background-color: #004166a9;

@@ -72,14 +72,13 @@ background : rgb(0, 0, 0);
         /* font-weight: 1000;  */
     }
     nav.sidebar ul li.active:hover a{
-      color: #ffffff;     
+      color: transparent;
+      text-shadow: none;      
     }
     nav.sidebar ul li.active:hover{
       display: flex;
       color: rgb(255, 255, 255);
-      /* background-color: rgba(28, 71, 136, 0.925); */
-      /* background-color: #f35525; */
-  
+       
     }
 nav.sidebar ul li.active a.expandable {
           color: rgb(13, 106, 168)  }
@@ -98,7 +97,8 @@ ul li a{
   
   text-decoration: none;
   font-size: 20px;
-  color: #000000;
+  color: #ffffff;
+  text-shadow: 10px 0px 20px #000000, 10px 0px 20px #000000;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 1000;
   transition: 0.2s ease-in-out;
@@ -113,6 +113,7 @@ ul li:hover {
 } 
 ul li:hover a{
   color: #7b5ec9;
+  text-shadow: none;
 }
 
 ul li {

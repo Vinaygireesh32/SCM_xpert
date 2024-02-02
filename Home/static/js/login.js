@@ -1,7 +1,3 @@
-if (localStorage.getItem("token") === null) {
-    window.location.href = "/login";
-}
-
 let captcha;
 let alphabets = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 let status = document.getElementById('status');
@@ -30,8 +26,6 @@ function validateForm() {
     }
 }
 
-console.log("working");
-
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('submit').addEventListener('click', function (event) {
         // Prevent the default action (navigation to the specified URL)
@@ -49,30 +43,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 body: formData,
             })
+               
                 .then(response => {
                     if (response.status === 200) {
                         return response.json();
-                    }
-                    else {
-                        throw new Error("User Not Found or Invalid Credentials");
+                    } else {
+                        throw new Error("Invalid username or password");
                     }
                 })
                 .then(response => {
                     console.log(response);
-
-                    localStorage.setItem("token", ` ${response.token}`);
+                
+                    localStorage.setItem("token", `${response.token}`);
                     sessionStorage.setItem("username", `${response.username}`);
                     sessionStorage.setItem("email", `${response.email}`);
                     sessionStorage.setItem("role", `${response.role}`);
                     if (localStorage.getItem("token") !== null && response.role === "User") {
                         window.location.href = "/dashboard";
-                    }
-                    else {
+                    } else {
                         window.location.href = "/admin";
                     }
                 })
                 .catch(error => {
-                    $(".error-message").text(error.message);
+                    $(".error-message").text(error.message); // Display the error message
                     $(".error-message").css("visibility", "visible");
                 });
         } else {

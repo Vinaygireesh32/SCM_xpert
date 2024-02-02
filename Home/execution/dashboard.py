@@ -1,7 +1,5 @@
-from fastapi import APIRouter, HTTPException, status, Request
+from fastapi import APIRouter, Request
 from fastapi.security import OAuth2PasswordBearer
-from fastapi import Depends
-from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from execute.execute import *

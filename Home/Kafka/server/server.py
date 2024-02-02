@@ -4,17 +4,18 @@ import json
 import time
 import random
 import os
-# from dotenv import load_dotenv
- 
-# load_dotenv()
- 
- 
-# server = socket.gethostbyname(socket.gethostname()) #get Ip addr
-# print(server)
-ADDR = ("127.0.0.1", 12345)
-FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = "DISCONNECT !"
- 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
+
+# Get the values from the environment variables
+SERVER_HOST = os.getenv("SERVER_HOST", "127.0.0.1")
+SERVER_PORT = int(os.getenv("SERVER_PORT", 12345))
+FORMAT = os.getenv("FORMAT", "utf-8")
+DISCONNECT_MESSAGE = os.getenv("DISCONNECT_MESSAGE", "DISCONNECT!")
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("socket created")
  
@@ -23,7 +24,7 @@ server.bind(("127.0.0.1", 1235))
 server.listen(2)
 print(f"[LISTENING] Server is listening on {server}")
 con, addr = server.accept()
-print(f'CONNECTION FROM {ADDR} HAS BEEN ESTABLISHED')
+print(f'CONNECTION FROM {SERVER_HOST} HAS BEEN ESTABLISHED')
 connected = True
 while connected:
         try:

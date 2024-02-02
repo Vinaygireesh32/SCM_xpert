@@ -95,6 +95,7 @@ ul li a:hover{
 form{
   width: 300px;
   margin: 20px 50px;
+
 }
 .wrapper h1{
   font-size: 36px;
@@ -109,7 +110,7 @@ form{
   color: rgb(255, 238, 7);
   top: 10px;
   font-weight: 600;
-  
+  font-style: italic;  
 }
 .wrapper .input-box{
   position: relative;
@@ -121,17 +122,18 @@ form{
   width: 100%;
   height: 100%;
   background: white;
-  border: none;
-  outline: none;
-  border: 2px solid rgb(255, 255, 255);
-
+  border: 3px solid rgba(255, 255, 255, 0.781);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  font-weight: 600;
   border-radius: 40px;
-  font-size: 16px;
   color: #000000;
   padding: 20px 45px 20px 20px;
 }
 .input-box input::placeholder{
-  color: #000000;
+  color: #004166;
+  font-size: 18px;
+  font-weight: 600;
 }
 .input-box i{
   position: absolute;
@@ -140,25 +142,7 @@ form{
   transform: translate(-50%);
   font-size: 20px;
 }
-.wrapper .remember-forgot{
-  display: flex;
-  color: #ffffffc4;
-  justify-content: space-between;
-  font-size: 14.5px;
-  
-  margin: -15px 0 15px;
-}
-.remember-forgot label input{
-  accent-color: #000000;
-  margin-right: 3px;
 
-}
-.wrapper .remember-forgot{
-  display: flex;
-  justify-content: space-between;
-  font-size: 14.5px;
-  margin: -15px 0 15px;
-}
 
 
 .wrapper .btn{
@@ -196,14 +180,14 @@ background: transparent;
 }
 .limits{
   margin-left: 340px;
-  margin-top: -358px;
+  margin-top: -345px;
   width: 500px;
   background-color: #004166e0;
   box-shadow: 0 0 5px rgb(255, 255, 255),0 0 15px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
   color: #000000;
   border-bottom-left-radius: 12px;
   border-top-left-radius: 12px;
-  height: 490px;
+  height: 470px;
 
   
 }
@@ -211,12 +195,9 @@ background: transparent;
   color: #ffffff;
   text-align: center;
   padding-top: 30px;
-  text-decoration-line: underline;
 }
 .limits p{
   color: #ffffff;
-  /* font-style: italic; */
- 
   padding: 20px 30px 20px 20px;
   font-size: 18px;
 }

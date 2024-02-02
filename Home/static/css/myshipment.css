@@ -72,13 +72,12 @@ background : rgb(0, 0, 0);
         /* font-weight: 1000;  */
     }
     nav.sidebar ul li.active:hover a{
-      color: #ffffff;     
+      color: transparent;
+      text-shadow: none;   
     }
     nav.sidebar ul li.active:hover{
       display: flex;
       color: rgb(255, 255, 255);
-      /* background-color: rgba(28, 71, 136, 0.925); */
-      /* background-color: #f35525; */
   
     }
 nav.sidebar ul li.active a.expandable {
@@ -98,7 +97,8 @@ ul li a{
   
   text-decoration: none;
   font-size: 20px;
-  color: #000000;
+  color: #ffffff;
+  text-shadow: 10px 0px 20px #7b5ec9, 10px 0px 20px #7b5ec9;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 1000;
   transition: 0.2s ease-in-out;
@@ -113,6 +113,7 @@ ul li:hover {
 } 
 ul li:hover a{
   color: #7b5ec9;
+  text-shadow: none;
 }
 
 ul li {
@@ -128,19 +129,18 @@ ul li {
   width: 1200px;
   height: 470px;
   overflow-y: auto;
-  background-color: #ffffffc7;
+  /* background-color: #ffffffc7; */
+  
+  background: linear-gradient(90deg, rgb(250, 250, 250) 0%, #8b72d1 35%, #7b5ec9 100%);
   border-radius: 10px;
 }
 table{
  position: absolute;
- background-color: #177ed300;
- /* transform: translate(-50%,-50%); */
+ /* background-color: #177ed300; */
  top: 10px;
  left: 1%;
- right: 1%;
  border-collapse: collapse;
  width:2000px;
- height: 400px;
  border-radius: 5%;
  /* box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2); */
 }
@@ -154,34 +154,32 @@ tr{
   
 }
 th{
-  /* width: auto; */
+  /* position: sticky;
+  top: 0; */
+  background-color: #7b5ec9d2;
   color: #ffffff;
+  width: 2000PX;
   padding: 12px;
   text-align: left;
   font-size: 20px;
-  /* border-bottom: 1px solid #000000; */
+  border-left: 2px solid #ffffffc7;
+ 
 }
 tr,td{
   width: auto;
- 
+  height: auto;
   left: 20px;
   text-align: left;
   font-size: 20px;
   font-weight: 500;
-  padding-left: 16px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  
+  padding: 10px 16px 10px 16px ;
+  color: #ffffff;
+
 }
- #header{
-  
-  background-color: #7b5ec9d2;
-  color: #ffffff;
-  
-} 
+
 tr:hover{
-  color: #ffffff;
-  background-color: #000000;
+  
+  background: #7b5ec9;
   transform: scale(1.03);
   box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2);
 }

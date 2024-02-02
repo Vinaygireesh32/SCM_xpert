@@ -1,11 +1,21 @@
 if (localStorage.getItem("token") === null) {
   window.location.href = "/login";
 }
+function getFormattedDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// Set the min attribute of the date input to today's date
+document.getElementById('expected_delivery_date').min = getFormattedDate();
 
 document.addEventListener("DOMContentLoaded", function () {
+
   document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("Dom load", localStorage.getItem("token"));
 
     // Reset error message visibility
     $("#error-message").css("visibility", "hidden");
@@ -15,12 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (const field of fields) {
       if ($("#" + field).val() === "") {
-        $("#error-message").text("Please enter all fields");
-        $("#error-message").css("visibility", "visible");
+        $("#error-message").text("Please enter all fields !!");
+        $("#error-message").css({
+          visibility: "visible",
+          color: "white"
+        });
         return;
       }
     }
-    const name=sessionStorage.getItem("username")
+
     // If all fields are filled, proceed with the fetch
     fetch("/newshipment", {
       method: "POST",
@@ -43,20 +56,34 @@ document.addEventListener("DOMContentLoaded", function () {
         "description": $("#description").val(),
       }),
     })
-      .then(response => {
-        console.log(response)
-        if (response.status === 200) {
+      .then(response => response.json().then(data => ({ status: response.status, body: data })))
+      .then(data => {
+        if (data.status === 200) {
           // Clear form fields
           document.getElementById("myForm").reset();
-          return response.json();
-        } else {
-          $("#error-message").text("Unexpected error");
-          $("#error-message").css("visibility", "visible");
+
+          // Display success message
+          $("#error-message").text("Submitted successfully!");
+          $("#error-message").css({
+            visibility: "visible",
+            color: "white"
+          });
+
+          // You may want to redirect or perform other actions here
+        } else if (data.status === 400) {
+          // Display the error message from the server
+          $("#error-message").text(data.body.detail);
+          $("#error-message").css({
+            visibility: "visible",
+            color: "white"
+          });
         }
       })
       .catch(error => {
-        $("#error-message").text(error.message);
+        console.error("Error:", error);
+        $("#error-message").text("An error occurred.");
         $("#error-message").css("visibility", "visible");
       });
   });
 });
+

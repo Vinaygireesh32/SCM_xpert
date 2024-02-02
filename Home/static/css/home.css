@@ -117,6 +117,7 @@ img{
   color: #ffffff;
   animation: textup 12s linear infinite;
   transform: translateY(100px);
+  
 }
 .text-box h1{
   font-size: 30px;
@@ -124,11 +125,12 @@ img{
   text-shadow: 0 0 10px #004166, 0 0 10px #004166, 0 0 10px #004166, 0 0 10px #004166, 0 0 10px #004166, 0 0 10px #004166, 0 0 10px #004166;
 }
 .text-box p{
-  width: auto;
-  font-size: 22px;
-  padding: 20px 0 20px 0;
-  word-spacing: 10px;
-  margin-top: 80px;
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: justify;
+  margin: 20px 0px 0 0px;
+  padding: 30px 0px 10px 0px;
 
 }
 .text-box span{
