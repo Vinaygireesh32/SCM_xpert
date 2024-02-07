@@ -18,9 +18,9 @@ DISCONNECT_MESSAGE = os.getenv("DISCONNECT_MESSAGE", "DISCONNECT!")
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("socket created")
- 
+
 # bind this socket to the address we configured earlier
-server.bind(("127.0.0.1", 1235))    
+server.bind(("", 12345))    
 server.listen(2)
 print(f"[LISTENING] Server is listening on {server}")
 con, addr = server.accept()
@@ -50,7 +50,6 @@ while connected:
  
            
         except IOError as e:
-            if e.errno == errno.EPIPE:
-                pass
+            print(e)
  
 con.close()

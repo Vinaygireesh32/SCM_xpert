@@ -1,8 +1,8 @@
 from fastapi import APIRouter,Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execute.execute import *
-from execution.login import*
+from execute.execute import device_data
+from execution.login import JSONResponse
 from fastapi import APIRouter, Depends
 from fastapi import Request
 from fastapi.security import OAuth2PasswordBearer

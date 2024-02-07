@@ -3,17 +3,9 @@ version: '3'
 services:
   # main application service
   app:
-    image: backendapp:latest  # Use custom image from Docker Hub
+    image: scm:latest  # Use custom image from Docker Hub
     ports:
       - "8000:8000"
-    environment:
-      - FRONTEND_URL=127.0.0.1:80
-
-  # Frontend service
-  frontend:
-    image: uiapp:latest  # Use custom UI app image from Docker Hub
-    ports:
-      - "80:80"
 
   # Zookeeper for Kafka
   zookeeper:
@@ -39,7 +31,7 @@ services:
 
   # Server service
   server:
-    image: socketapp:latest  # Use custom socket app image from Docker Hub
+    image: server:latest  # Use custom socket app image from Docker Hub
     ports:
       - "12345:12345"
     depends_on:
@@ -47,17 +39,16 @@ services:
 
   # Producer service
   producer:
-    image: producerapp:latest  # Use custom producer app image from Docker Hub
+    image: producer:latest  # Use custom producer app image from Docker Hub
     environment:
       - bootstrap_servers=kafka:9092
       - host=server
     depends_on:
       - server
-      - kafka
 
   # Consumer service
   consumer:
-    image: consumerapp:latest  # Use custom consumer app image from Docker Hub
+    image: consumer:latest  # Use custom consumer app image from Docker Hub
     environment:
       - bootstrap_servers=kafka:9092
     depends_on:

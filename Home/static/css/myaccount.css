@@ -152,6 +152,7 @@ ul li {
 	 padding: 50px 20px;
 	 padding-top: 100px;
 	 display: flex;
+
 	
 }
  @media screen and (max-width: 768px) {
@@ -160,27 +161,24 @@ ul li {
 		 height: auto;
 		 min-height: 100vh;
 		 padding-top: 100px;
-     
 	}
 }
  .profile-card {
-  width: 400px;
-  min-height: 360px;
- 
-  margin: auto;
-  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
-  /* background: #d40303; */
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.733),0 0 15px rgba(0, 0, 0, 0.733), 0 0 20px rgba(0, 0, 0, 0.733), 0 0 20px rgba(0, 0, 0, 0.733), 0 0 30px rgba(0, 0, 0, 0.733);  
-  /* box-shadow: 0 0 15px #8b72d1,0 0 15px #8b72d1, 0 0 20px #8b72d1, 0 0 20px #8b72d1, 0 0 30px #8b72d1; */
-  border: 2px solid #ffffffbb; 
-  background-color: #0000009c;
-  max-width: 700px;
-  position: relative;
+	 width: 400px;
+	 min-height: 360px;
+	 margin: auto;
+	 box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+	 /* background: #d40303; */
+	 border-radius: 12px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.733),0 0 15px rgba(0, 0, 0, 0.733), 0 0 20px rgba(0, 0, 0, 0.733), 0 0 20px rgba(0, 0, 0, 0.733), 0 0 30px rgba(0, 0, 0, 0.733);
+   border: 2px solid #ffffff;
+  
+   background-color: #000000b2;
+   
+	 max-width: 700px;
+	 position: relative;
 }
- .profile-card.active .profile-card__cnt {
-	 filter: blur(6px);
-}
+
  .profile-card.active .profile-card-message, .profile-card.active .profile-card__overlay {
 	 opacity: 1;
 	 pointer-events: auto;

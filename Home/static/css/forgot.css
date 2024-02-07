@@ -97,12 +97,12 @@
 
 
 .wrapper{
-  margin-left: 259px;
+  margin-left: 90px;
   width: 400px;
   transform: translate(150%,28%);
   box-shadow: 0 0 5px rgb(255, 255, 255),0 0 15px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
   border: 2px solid rgba(0, 0, 0, 0.377);
-  margin-top: 50px;
+  margin-top: -10px;
   background-color: #004166a9;
   /* 243641 */
   
@@ -206,14 +206,14 @@ form{
 }
 .limits{
   margin-left: 390px;
-  margin-top: -290px;
+  margin-top: -340px;
   width: 470px;
   background-color: #004166e0;
   box-shadow: 0 0 5px rgb(255, 255, 255),0 0 15px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
   color: #000000;
   border-bottom-left-radius: 12px;
   border-top-left-radius: 12px;
-  height: 403px;
+  height: 472px;
 
   
 }

@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Check if the captcha is entered correctly
         if (validateForm()) {
-            // Now, you can add your custom logic
-            console.log($("#username").val())
-            console.log($("#password").val())
+            // Now, adding custom logic
+            // console.log($("#username").val())
+            // console.log($("#password").val())
             const formData = new FormData();
             formData.append("username", $("#username").val());
             formData.append("password", $("#password").val());

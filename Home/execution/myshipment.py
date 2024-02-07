@@ -11,17 +11,10 @@ html = Jinja2Templates(directory="html")
 web.mount("/static", StaticFiles(directory="static"), name="static")
  
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
- 
-# async def get_current_user(token: str = Depends(oauth2_scheme)):
-#     payload = await  decode_token(token)
-#     if payload and "sub" in payload and "email" in payload:
-#         user_data = user_cred.find_one({"email": payload["email"]})
-#         if user_data :
-#             return user_data
- 
+
 @web.get("/myshipment")
 def shipment_html(request: Request):
-    return html.TemplateResponse("MyShipment.html", {"request": request})
+    return html.TemplateResponse("myshipment.html", {"request": request})
  
 @web.get("/myshipmenttable")
 def shipment1(request: Request):

@@ -2,13 +2,11 @@ from fastapi.responses import JSONResponse
 from fastapi import APIRouter, Request, Form, HTTPException, status, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execute.execute import *
+from execute.execute import user_cred, admin_cred
 from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 from jose import jwt, ExpiredSignatureError, JWTError
-
-
 
 web = APIRouter()
 html = Jinja2Templates(directory="html")
@@ -23,7 +21,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 pwd_cxt = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class Hash:
-    def hash_password(pwd: str):   
+    def hash_password(pwd: str):
         return pwd_cxt.hash(pwd)
 
     def verify_password(pwd: str, hashed_password: str):  
@@ -62,6 +60,7 @@ def decode_token(token: str = Depends(oauth2_scheme)):
 @web.get("/login")
 def login(request: Request):
     return html.TemplateResponse("login.html", {"request": request})
+
 
 @web.post("/login")
 def login(request: Request, username: str = Form(...), password: str = Form()):

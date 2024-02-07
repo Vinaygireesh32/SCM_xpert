@@ -15,14 +15,7 @@ body{
   background-position: center;
   backdrop-filter: blur(3px);
 }
-/* .main{
-  background: fixed;
-  background-image:url(/static/bg.jpg);
-  background-position: center;
-  background-size: cover;
-  height: 817px;
-  backdrop-filter: blur(3px);
-} */
+
 .navbar{
   background-color: #004166a9;
   width: auto;
@@ -78,7 +71,7 @@ ul li a:hover{
 
 
 .wrapper{
-  margin-left: 200px;
+  margin-left: 90px;
   margin-top: -30px;  
   width: 400px;
   transform: translate(160%,27%);
@@ -201,3 +194,31 @@ background: transparent;
   padding: 20px 30px 20px 20px;
   font-size: 18px;
 }
+
+/* Add styles for password limitations */
+/* .password-limitations {
+  display: block;
+  margin-left: 340px;
+  margin-top: -345px;
+  width: 500px;
+  background-color: #004166e0;
+  box-shadow: 0 0 5px rgb(255, 255, 255),0 0 15px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
+  color: #ffffff;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  height: auto; 
+  overflow: hidden; 
+  padding: 10px; 
+}
+
+.password-limitations h2 {
+  color: #ffffff;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.password-limitations p {
+  color: #ffffff;
+  padding: 10px 0;
+  font-size: 16px;
+} */

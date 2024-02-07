@@ -26,7 +26,7 @@
         </div>
     </div>
   <div class="page">
-  <div class="wrapper" >
+  <div class="wrapper" id="wrapper">
     <form action="/signup" method="post">
       <h1>SignUp</h1>
       {% if error_message %}
@@ -35,19 +35,20 @@
       </div>
       {% endif %}
       <div class="input-box">
-        <input type="text" name="Username" placeholder="Username" required>
+        <input type="text" name="Username" placeholder="Username" id="username" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="text" name="Email" placeholder="Email" required>
+        <input type="text" name="Email" placeholder="Email" id="email" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" name="Create_Password" placeholder="Create Password" required>
+        <input type="password" name="Create_Password" placeholder="Create Password" id="newpassword" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
+     
       <div class="input-box">
-        <input type="password" name="Confirm_Password" placeholder="Confirm Password" required>
+        <input type="password" name="Confirm_Password" placeholder="Confirm Password" id="confirmpassword" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
       <button type="submit" class="btn">Register</button>
@@ -56,7 +57,7 @@
       </div>
     </form>
   </div>
-<div class="limits">
+<div id="limits" class="limits">
     <h2>Password Limitations</h2>
     <p>-At least one alphabet character</p>
     <p>-At least one digit</p>
@@ -65,8 +66,30 @@
 
     
   </div>
+
 </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('limits').style.display = "none";
+      document.getElementById('newpassword').addEventListener("click", function() {
+        document.getElementById('wrapper').style.marginLeft = "200px";
+        document.getElementById('limits').style.display = "block";
+      })
+      document.getElementById('email').addEventListener("keydown", function(event) {
+        if (event.key=="Tab") {
+          document.getElementById('wrapper').style.marginLeft = "200px";
+          document.getElementById('limits').style.display = "block";
+        }
+        
+      })
+      document.getElementById('username').addEventListener("click", function() {
+        document.getElementById('wrapper').style.marginLeft = "90px";
+        document.getElementById('limits').style.display = "none";
+      })
+    })
+    </script>
+    
 </body>
 </html>
 

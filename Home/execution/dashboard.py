@@ -2,8 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from execute.execute import *
-from execution.login import *
+
 
 
 web = APIRouter()

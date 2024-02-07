@@ -42,7 +42,7 @@ if (localStorage.getItem("token") === null) {
 
 
 $(document).ready(function () {
-    console.log("working");
+    // console.log("working");
     $("#username").text(` ${sessionStorage.getItem("username")}`);
     $("#email").text(`Email: ${sessionStorage.getItem("email")}`);
     $("#role").text(`Role    : ${sessionStorage.getItem("role")}`);

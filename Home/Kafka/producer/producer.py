@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Read environment variables
+host=os.getenv('host')
+port=os.getenv('port')
 bootstrap_servers = os.getenv("BOOTSTRAP_SERVERS")
 topic_name = os.getenv("TOPIC_NAME")
 
@@ -17,7 +19,7 @@ producer = Producer(config)
 
 soc = socket.socket()
 connected = True
-soc.connect(("127.0.0.1", 1235))
+soc.connect((host, int(port)))
 
 while connected:
     message = soc.recv(1024).decode("utf-8")
