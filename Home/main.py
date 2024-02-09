@@ -16,13 +16,9 @@ from execution.myaccount import web as myaccount
 from execution.adminacc import web as adminacc
 from execution.userlist import web as userlist
 
-
-
-
 app = FastAPI()
 html = Jinja2Templates(directory = "html")
 app.mount("/static", StaticFiles(directory="static"), name = "static")
-
 
 app.include_router(log)
 app.include_router(signup)

@@ -2,8 +2,8 @@ from fastapi import APIRouter, Request, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execution.login import *
-from execute.execute import *
+from execution.login import jwt
+from execute.execute import shipment_cred
 from fastapi.security import OAuth2PasswordBearer
  
 web=APIRouter()

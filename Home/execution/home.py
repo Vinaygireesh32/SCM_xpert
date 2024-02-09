@@ -9,7 +9,7 @@ web = APIRouter()
 html = Jinja2Templates(directory = "html")
 web.mount("/static", StaticFiles(directory="static"), name = "static")
 
-@web.get("/home")
+@web.get("/")
 def details(details : Request):
     data = shipment_cred.find()
     return html.TemplateResponse("home.html", {"request": details, "home": data})

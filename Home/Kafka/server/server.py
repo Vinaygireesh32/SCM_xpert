@@ -1,5 +1,4 @@
 import socket
-import errno
 import json
 import time
 import random

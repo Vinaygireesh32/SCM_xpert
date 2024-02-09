@@ -26,7 +26,7 @@ def forgot(details: Request):
 def reset_password(request: Request, email: str = Form(...), username: str = Form(), password: str = Form(), confirm_password: str = Form()):
     # Validate email
     if not email_pattern.match(email):
-        error_message = "Invalid email format **"
+        error_message = "Invalid email format"
         return html.TemplateResponse(f, {"request": request, "error_message": error_message})
 
     # Check if passwords match
