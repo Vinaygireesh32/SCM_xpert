@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const field of fields) {
       if ($("#" + field).val() === "") {
         $("#error-message").text("Please enter all fields !!");
+        setTimeout(function () {
+          $("#error-message").text("");
+      }, 3000);
         $("#error-message").css({
           visibility: "visible",
           color: "white"
@@ -64,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Display success message
           $("#error-message").text("Your Shipment has been done !");
+          setTimeout(function () {
+            $("#error-message").text("");
+        }, 3000);
           $("#error-message").css({
             visibility: "visible",
             color: "white"

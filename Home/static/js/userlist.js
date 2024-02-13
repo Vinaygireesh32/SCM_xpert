@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(response);
                     if (response.status !== 200) {
                         throw new Error(`No User found`);
+                        
                     }else {
                         return response.json();
+                        
                     }
                     
                 })
@@ -47,6 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => {
                     console.log(error);
                     $("#successMessage").text("No User found");
+                    setTimeout(function () {
+                        $("#successMessage").text("");
+                    }, 3000);
+                });
                 });
         });
 
@@ -99,23 +105,36 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (response.success) {
                             // Display success message
                             $("#successMessage").text(response.success.join("\n"));
+                            setTimeout(function () {
+                                $("#successMessage").text("");
+                            }, 3000);
+                    
                         } else if (response.error) {
                             // Display error message
                             $("#successMessage").text(response.error.join("\n"));
+                            setTimeout(function () {
+                                $("#successMessage").text("");
+                            }, 3000);
+                    
                         }
                     })
                     .catch(error => {
                         console.log("Error:", error.message);
                         // Display general error message
                         $("#successMessage").text(`Error: ${error.message}`);
+                        setTimeout(function () {
+                            $("#successMessage").text("");
+                        }, 3000);
                     });
             } else {
                 // Display message when no users are selected
                 $("#successMessage").text("No users selected");
+                setTimeout(function () {
+                    $("#successMessage").text("");
+                }, 3000);
             }
         });
        
 
 
     });
-});

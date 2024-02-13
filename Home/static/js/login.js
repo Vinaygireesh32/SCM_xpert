@@ -53,16 +53,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(response => {
                     console.log(response);
-                
-                    localStorage.setItem("token", `${response.token}`);
-                    sessionStorage.setItem("username", `${response.username}`);
-                    sessionStorage.setItem("email", `${response.email}`);
-                    sessionStorage.setItem("role", `${response.role}`);
-                    if (localStorage.getItem("token") !== null && response.role === "User") {
-                        window.location.href = "/dashboard";
+                    if (response !== null && response !== undefined) {
+                        localStorage.setItem("token", `${response.token}`);
+                        sessionStorage.setItem("username", `${response.username}`);
+                        sessionStorage.setItem("email", `${response.email}`);
+                        sessionStorage.setItem("role", `${response.role}`);
+                        if (localStorage.getItem("token") !== null && response.role === "User") {
+                            window.location.href = "/dashboard";
+                        } else {
+                            window.location.href = "/admin";
+                        }
                     } else {
-                        window.location.href = "/admin";
+                        throw new Error("Invalid username or password");
                     }
+                    
                 })
                 .catch(error => {
                     $(".error-message").text(error.message); // Display the error message
@@ -78,5 +82,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial captcha generation on page load
     generate();
 });
-
-

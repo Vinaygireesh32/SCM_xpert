@@ -10,7 +10,8 @@
     <link rel="icon" href="/static/logo.png" type="image/icon type">
     <script src="../static/js/devicedata.js"></script>
     <link rel="stylesheet" href="/static/css/devicedata.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,10 +23,10 @@
                 </div>
                 <ul>
                     <li><a href="/admin">Dashboard</a></li>
-                    <li class="active"><a href="/devicedata">Devicedata</a></li>
+                    <li class="active"><a href="/devicedata">Device Data</a></li>
+                    <li><a href="/shipment">Shipments</a></li>
                     <li><a href="/userlist">Users</a></li>
                     <li><a href="/adminacc">My Account</a></li>
-                    
                     <li><a href="#" onclick="logout()">Logout</a></li>
             </nav>
         </div>
@@ -48,29 +49,29 @@
         <div class="tb">
             <table>
                 <thead>
-                <tr id="header">
-                    <th>Device Id</th>
-                    <th>Battery Level</th>
-                    <th>Sensor Temperature</th>
-                    <th>Route From</th>
-                    <th>Route To</th>
-                </tr>
-            </thead>
-            <tbody id="tablebody">
+                    <tr id="header">
+                        <th>Device Id</th>
+                        <th>Battery Level</th>
+                        <th>Sensor Temperature</th>
+                        <th>Route From</th>
+                        <th>Route To</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
 
-            </tbody>
-                
+                </tbody>
+
             </table>
         </div>
         <p id="value" style="display: none;">{{token}}</p>
-        <script>  
+        <script>
             function logout() {
                 // Clear user-related data from localStorage
                 localStorage.removeItem("token");
                 sessionStorage.removeItem("username");
                 sessionStorage.removeItem("email");
                 sessionStorage.removeItem("role");
-    
+
                 // Redirect to the login page or any other desired destination
                 window.location.href = "/login";
             }

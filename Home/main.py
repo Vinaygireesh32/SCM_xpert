@@ -15,6 +15,7 @@ from execution.dashboard import web as dashboard
 from execution.myaccount import web as myaccount
 from execution.adminacc import web as adminacc
 from execution.userlist import web as userlist
+from execution.shipment import web as shipment
 
 app = FastAPI()
 html = Jinja2Templates(directory = "html")
@@ -34,3 +35,4 @@ app.include_router(dashboard)
 app.include_router(myaccount)
 app.include_router(adminacc)
 app.include_router(userlist)
+app.include_router(shipment)

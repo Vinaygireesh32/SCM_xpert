@@ -1,7 +1,7 @@
 from fastapi import APIRouter,Request, UploadFile, File
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execute.execute import *
+from config.config import *
 from execution.login import*
 
 web = APIRouter()

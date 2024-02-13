@@ -2,7 +2,7 @@ from fastapi.responses import JSONResponse
 from fastapi import APIRouter, Request, Form, HTTPException, status, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execute.execute import user_cred, admin_cred
+from config.config import user_cred, admin_cred
 from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
@@ -66,29 +66,30 @@ def login(request: Request):
 def login(request: Request, username: str = Form(...), password: str = Form()):
     
     user = user_cred.find_one({"username": username})
+    try:
+        if user and Hash.verify_password(password, user["password"]) :
+            token = create_jwt_token(user, role="user")
+            response_content = {
+                "token": token,
+                "username": user["username"],
+                "email": user["email"],
+                "role":"User",
+            }
+            return JSONResponse(content=response_content, status_code=200)
     
-    if user and Hash.verify_password(password, user["password"]) :
-        token = create_jwt_token(user, role="user")
-        response_content = {
-            "token": token,
-            "username": user["username"],
-            "email": user["email"],
-            "role":"User",
-        }
-        return JSONResponse(content=response_content, status_code=200)
     
-    admin = admin_cred.find_one({"username": username})
-    
-    if admin and Hash.verify_password(password, admin["password"]):
-        token = create_jwt_token(admin, role="admin")
-        response_content = {
-            "token": token,
-            "username": admin["username"],
-            "email": admin["email"],
-            "role": "Admin",
-        }
-        return JSONResponse(content=response_content, status_code=200) 
-
+        admin = admin_cred.find_one({"username": username})
+   
+        if admin and Hash.verify_password(password, admin["password"]):
+            token = create_jwt_token(admin, role="admin")
+            response_content = {
+                "token": token,
+                "username": admin["username"],
+                "email": admin["email"],
+                "role": "Admin",
+            }
+            return JSONResponse(content=response_content, status_code=200) 
+    except:
     # If neither user nor admin is found, return invalid credentials
-    response_content = {"detail": "Invalid username or password"}
-    return JSONResponse(content=response_content, status_code=401)
+        response_content = {"detail": "Invalid username or password"}
+        return JSONResponse(content=response_content, status_code=401)

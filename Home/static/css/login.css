@@ -168,9 +168,7 @@ form{
 
 .wrapper .btn:hover{
   color: #ffffff;
-  background: transparent;
-  
-  
+  background: transparent; 
 }
 .wrapper .register-link{
   color: #ffffffc0;
