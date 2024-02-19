@@ -1,4 +1,8 @@
-if (localStorage.getItem("token") === null) {
+if (sessionStorage.getItem("role") === "Admin") {
+  window.location.href = "/login";
+}
+
+else if (localStorage.getItem("token") === null) {
   window.location.href = "/login";
 }
 

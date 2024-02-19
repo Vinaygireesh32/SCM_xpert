@@ -3,7 +3,8 @@ version: '3'
 services:
   # main application service
   app:
-    image: scm:latest  # Use custom image from Docker Hub
+    image: vinay132/scmxpert:latest
+  # Use custom image from Docker Hub
     ports:
       - "8000:8000"
 
@@ -31,7 +32,7 @@ services:
 
   # Server service
   server:
-    image: server:latest  # Use custom socket app image from Docker Hub
+    image: vinay132/scmserver:latest  # Use custom socket app image from Docker Hub
     ports:
       - "12345:12345"
     depends_on:
@@ -39,7 +40,7 @@ services:
 
   # Producer service
   producer:
-    image: producer:latest  # Use custom producer app image from Docker Hub
+    image: vinay132/scmproducer:latest  # Use custom producer app image from Docker Hub
     environment:
       - bootstrap_servers=kafka:9092
       - host=server
@@ -48,7 +49,8 @@ services:
 
   # Consumer service
   consumer:
-    image: consumer:latest  # Use custom consumer app image from Docker Hub
+    image: vinay132/scmconsumer:latest
+  # Use custom consumer app image from Docker Hub
     environment:
       - bootstrap_servers=kafka:9092
     depends_on:

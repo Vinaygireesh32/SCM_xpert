@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get the values from the environment variables
-SERVER_HOST = os.getenv("SERVER_HOST", "127.0.0.1")
-SERVER_PORT = int(os.getenv("SERVER_PORT", 12345))
+# SERVER_HOST = os.getenv("SERVER_HOST", "127.0.0.1")
+# SERVER_PORT = int(os.getenv("SERVER_PORT", 12345))
 FORMAT = os.getenv("FORMAT", "utf-8")
 DISCONNECT_MESSAGE = os.getenv("DISCONNECT_MESSAGE", "DISCONNECT!")
 
@@ -23,7 +23,7 @@ server.bind(("", 12345))
 server.listen(2)
 print(f"[LISTENING] Server is listening on {server}")
 con, addr = server.accept()
-print(f'CONNECTION FROM {SERVER_HOST} HAS BEEN ESTABLISHED')
+# print(f'CONNECTION FROM {SERVER_HOST} HAS BEEN ESTABLISHED')
 connected = True
 while connected:
         try:

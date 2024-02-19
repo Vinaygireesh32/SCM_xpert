@@ -13,13 +13,13 @@ port=os.getenv('port')
 bootstrap_servers = os.getenv("BOOTSTRAP_SERVERS")
 topic_name = os.getenv("TOPIC_NAME")
 
-config = {'bootstrap.servers': bootstrap_servers}
-
-producer = Producer(config)
-
 soc = socket.socket()
 connected = True
 soc.connect((host, int(port)))
+
+config = {'bootstrap.servers': bootstrap_servers}
+
+producer = Producer(config)
 
 while connected:
     message = soc.recv(1024).decode("utf-8")
