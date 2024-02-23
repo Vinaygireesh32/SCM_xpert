@@ -1,9 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -19,85 +20,97 @@ nav.sidebar {
   position: fixed;
   /* box-shadow: 0 0 5px rgb(255, 255, 255),0 0 25px rgb(255, 255, 255), 0 0 50px rgb(255, 255, 255), 0 0 100px rgb(255, 255, 255), 0 0 200px rgb(255, 255, 255); */
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.658);
-  width: 260px;
+  width: 300px;
   top: 0px;
   left: 0px;
   height: 100%;
   background: transparent;
   /* color: rgb(255, 255, 255); */
-  padding: 20px 10px; }
-  .logo{
-      display: flex;
-      justify-content: center;
-      text-shadow: 0 0 5px #000000, 0 0 5px #00000085, 0 0 10px #000000, 0 0 5px #000000, 0 0 0px #000000, 0 0 10px #000000, 0 0 0px #000000;
-      
-      font-size: 35px;
-      font-family: Arial;
-      padding-left: 30px;
-      padding-top: 10px;
-      margin-top: 5px;
-      text-align: center;
-font-size: 41px;
-font-weight: 600;
-font-family: 'Poppins', sans-serif;
-background : rgb(0, 0, 0);
--webkit-background-clip: text;
--webkit-text-fill-color: rgb(244, 85, 37);
-  }
-  
-  nav.sidebar ul {
-    margin: 0;
-    padding: 0;
-    margin-top: 60px; }
-    nav.sidebar ul li {
-      margin: 0;
-      padding-left: 20px;
-      height: 60px;
-      margin-top: 20px;
-      font-size: 0px;
-      list-style-type: none; }
-       
-       
-      nav.sidebar ul li.active {
-        background-color: white;
-        text-align: center;
-        margin-left: -3px;
-        font-style: italic;
-        font-size: 20px;  
-        border: 1px solid white;
-        border-radius: 30px;
-        box-shadow:
-           inset 0 0 50px #00000069,     
-           inset 20px 100px 80px #02476e,   
-           inset 120px 100px 80px #02476e,  
-           inset -80px -120px 300px #02476e, 
-           inset -120px 100px 100px #02476e;
-    }
-    nav.sidebar ul li.active:hover a{
-      
-      color: transparent;
-      text-shadow: none;
-    }
-   
+  padding: 20px 10px;
+}
 
-ul li{
+.logo {
+  display: flex;
+  justify-content: center;
+  text-shadow: 0 0 5px #000000, 0 0 5px #00000085, 0 0 10px #000000, 0 0 5px #000000, 0 0 0px #000000, 0 0 10px #000000, 0 0 0px #000000;
+
+  font-size: 35px;
+  font-family: Arial;
+  padding-left: 30px;
+  padding-top: 10px;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 41px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  background: rgb(0, 0, 0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #f35525;
+}
+
+nav.sidebar ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 60px;
+}
+
+nav.sidebar ul li {
+  margin: 0;
+  padding-left: 20px;
+  height: 60px;
+  margin-top: 20px;
+  font-size: 0px;
+  list-style-type: none;
+}
+
+
+nav.sidebar ul li.active {
+  background-color: white;
+  /* padding-left: -20px; */
+  font-style: italic;
+  font-size: 20px;  
+  border: 1px solid white;
+  border-radius: 30px;
+  box-shadow:
+     inset 0 0 50px #00000069,     
+     inset 20px 100px 80px #02476e,   
+     inset 120px 100px 80px #02476e,  
+     inset -80px -120px 300px #02476e, 
+     inset -120px 100px 100px #02476e;
+}
+
+nav.sidebar ul li.active:hover a {
+
+  color: transparent;
+  text-shadow: none;
+
+}
+
+
+
+ul li {
   list-style: none;
   margin-left: 200px;
   margin-top: 27px;
-  font-size: 16px;
+  
 }
 
-ul li a{
-  
+ul li a {
+
   text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 30px;
+  padding-top: 15px;
   font-size: 20px;
   color: #ffffff;
   text-shadow: 0px 0px 20px #02476e, 0px 0px 20px #02476e;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 900;
   transition: 0.2s ease-in-out;
-  padding-left: 40px;
+  
 }
+
 ul li:hover {
   border: 1px solid white;
   border-radius: 30px;
@@ -107,9 +120,11 @@ ul li:hover {
       inset 120px 100px 80px #02476e,  
       inset -80px -120px 300px #02476e, 
       inset -120px 100px 100px #02476e;
-      
-} 
-ul li:hover a{
+
+
+}
+
+ul li:hover a {
   color: #ffffff;
   text-shadow: none;
 }
@@ -117,7 +132,7 @@ ul li:hover a{
 ul li {
   display: flex;
   align-items: center;
-  
+
 }
 * {
   box-sizing: border-box;

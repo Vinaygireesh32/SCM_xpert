@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // You may want to redirect or perform other actions here
         } else if (data.status === 400) {
           // Display the error message from the server
-          $("#error-message").text(data.body.detail);
+          $("#error-message").text(data.body.msg);
           $("#error-message").css({
             visibility: "visible",
             color: "white"

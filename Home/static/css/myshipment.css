@@ -19,7 +19,7 @@ nav.sidebar {
   position: fixed;
   /* box-shadow: 0 0 5px rgb(255, 255, 255),0 0 25px rgb(255, 255, 255), 0 0 50px rgb(255, 255, 255), 0 0 100px rgb(255, 255, 255), 0 0 200px rgb(255, 255, 255); */
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.658);
-  width: 260px;
+  width: 300px;
   top: 0px;
   /* backdrop-filter: blur(10px); */
   left: 0px;
@@ -61,8 +61,7 @@ background : rgb(0, 0, 0);
        
       nav.sidebar ul li.active {     
         background-color: white;
-        text-align: center;
-        margin-left: -3px;
+        
         font-style: italic;
         font-size: 20px;  
         border: 1px solid white;
@@ -90,13 +89,16 @@ ul li{
 ul li a{
   
   text-decoration: none;
+  width: 100%;
+  height: 100%;
   font-size: 20px;
   color: #ffffff;
   text-shadow: 10px 0px 20px #7b5ec9, 10px 0px 20px #7b5ec9;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 1000;
   transition: 0.2s ease-in-out;
-  padding-left: 40px;
+  padding-left: 30px;
+  padding-top: 15px;
 }
 ul li:hover {
   border: 1px solid white;
@@ -122,14 +124,16 @@ ul li {
 /* --------------------------------------------------- */
 .tb{
   position: absolute;
-  left: 25%;
+  left: 14%;
   top: 15%;
-  width: 1200px;
-  height: 470px;
+  width: 2000px;
+  height: 570px;
   overflow-y: auto;
   /* background-color: #ffffffc7; */
-  
-  background: linear-gradient(90deg, rgb(250, 250, 250) 0%, #8b72d1 35%, #7b5ec9 100%);
+  overflow-x: hidden;
+  border: 1PX solid white;
+  /* background: linear-gradient(90deg, rgb(250, 250, 250) 0%, #8b72d1 35%, #7b5ec9 100%); */
+  background: linear-gradient(90deg, #9983d4 0%, #8b72d1 35%, #7b5ec9 100%);
   border-radius: 10px;
 }
 table{
@@ -177,9 +181,10 @@ tr,td{
 
 tr:hover{
   
+  
   background: #7b5ec9;
   transform: scale(1.03);
-  box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2);
+  /* box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2); */
 }
 
 

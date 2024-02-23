@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => {
                     $(".error-message").text(error.message); // Display the error message
                     $(".error-message").css("visibility", "visible");
+                    setTimeout(function () {
+                        $(".error-message").text("");
+                    }, 3000);
                 });
         } else {
             // Captcha validation failed, you can handle it here

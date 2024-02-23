@@ -27,14 +27,13 @@ class Hash:
     def verify_password(pwd: str, hashed_password: str):  
         return pwd_cxt.verify(pwd, hashed_password)
 
-def user_db(email:str):
-    user = user_cred.find_one({"email" : email})
-    return user
+# def user_db(email:str):
+#     user = user_cred.find_one({"email" : email})
+#     return user
 
 
 
-def create_jwt_token(user, role = "user"):
- 
+def create_jwt_token(user,role):
     credentials = {"sub": user["username"], "email": user["email"], "role": role}
     expires = timedelta(minutes=30)
     to_encode = credentials.copy()

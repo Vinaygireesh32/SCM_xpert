@@ -1,9 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -19,84 +20,97 @@ nav.sidebar {
   position: fixed;
   /* box-shadow: 0 0 5px rgb(255, 255, 255),0 0 25px rgb(255, 255, 255), 0 0 50px rgb(255, 255, 255), 0 0 100px rgb(255, 255, 255), 0 0 200px rgb(255, 255, 255); */
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.658);
-  width: 260px;
+  width: 300px;
   top: 0px;
   left: 0px;
   height: 100%;
   background: transparent;
   /* color: rgb(255, 255, 255); */
-  padding: 20px 10px; }
-  .logo{
-      display: flex;
-      justify-content: center;
-      text-shadow: 0 0 5px #000000, 0 0 5px #00000085, 0 0 10px #000000, 0 0 5px #000000, 0 0 0px #000000, 0 0 10px #000000, 0 0 0px #000000;
-      
-      font-size: 35px;
-      font-family: Arial;
-      padding-left: 30px;
-      padding-top: 10px;
-      margin-top: 5px;
-      text-align: center;
-font-size: 41px;
-font-weight: 600;
-font-family: 'Poppins', sans-serif;
-background : rgb(0, 0, 0);
--webkit-background-clip: text;
--webkit-text-fill-color: #f35525;
-  }
-  
-  nav.sidebar ul {
-    margin: 0;
-    padding: 0;
-    margin-top: 60px; }
-    nav.sidebar ul li {
-      margin: 0;
-      padding-left: 20px;
-      height: 60px;
-      margin-top: 20px;
-      font-size: 0px;
-      list-style-type: none; }
-       
-       
-      nav.sidebar ul li.active {
-        background-color: white;
-        text-align: center;
-        margin-left: -3px;
-        font-style: italic;
-        font-size: 20px;  
-        border: 1px solid white;
-        border-radius: 30px;
-        box-shadow:
-           inset 0 0 50px #00000069,     
-           inset 20px 100px 80px #02476e,   
-           inset 120px 100px 80px #02476e,  
-           inset -80px -120px 300px #02476e, 
-           inset -120px 100px 100px #02476e;
-    }
-    nav.sidebar ul li.active:hover a{
-      /* color: #ffffff;      */
-      color: transparent;
-      text-shadow: none;
-    }
+  padding: 20px 10px;
+}
 
-ul li{
+.logo {
+  display: flex;
+  justify-content: center;
+  text-shadow: 0 0 5px #000000, 0 0 5px #00000085, 0 0 10px #000000, 0 0 5px #000000, 0 0 0px #000000, 0 0 10px #000000, 0 0 0px #000000;
+
+  font-size: 35px;
+  font-family: Arial;
+  padding-left: 30px;
+  padding-top: 10px;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 41px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  background: rgb(0, 0, 0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #f35525;
+}
+
+nav.sidebar ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 60px;
+}
+
+nav.sidebar ul li {
+  margin: 0;
+  padding-left: 20px;
+  height: 60px;
+  margin-top: 20px;
+  font-size: 0px;
+  list-style-type: none;
+}
+
+
+nav.sidebar ul li.active {
+  background-color: white;
+  /* padding-left: -20px; */
+  font-style: italic;
+  font-size: 20px;  
+  border: 1px solid white;
+  border-radius: 30px;
+  box-shadow:
+     inset 0 0 50px #00000069,     
+     inset 20px 100px 80px #02476e,   
+     inset 120px 100px 80px #02476e,  
+     inset -80px -120px 300px #02476e, 
+     inset -120px 100px 100px #02476e;
+}
+
+nav.sidebar ul li.active:hover a {
+
+  color: transparent;
+  text-shadow: none;
+
+}
+
+
+
+ul li {
   list-style: none;
   margin-left: 200px;
   margin-top: 27px;
-  font-size: 16px;
+  
 }
 
-ul li a{
-  
+ul li a {
+
   text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 30px;
+  padding-top: 15px;
   font-size: 20px;
   color: #ffffff;
   text-shadow: 0px 0px 20px #02476e, 0px 0px 20px #02476e;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 900;
   transition: 0.2s ease-in-out;
-  padding-left: 40px;
+  
 }
+
 ul li:hover {
   border: 1px solid white;
   border-radius: 30px;
@@ -106,10 +120,11 @@ ul li:hover {
       inset 120px 100px 80px #02476e,  
       inset -80px -120px 300px #02476e, 
       inset -120px 100px 100px #02476e;
-  
-  
-} 
-ul li:hover a{
+
+
+}
+
+ul li:hover a {
   color: #ffffff;
   text-shadow: none;
 }
@@ -117,7 +132,7 @@ ul li:hover a{
 ul li {
   display: flex;
   align-items: center;
-  
+
 }
 
 
@@ -127,9 +142,9 @@ ul li {
   padding: 10px 20px 10px 20px;
   display: flex;
   position: absolute;
-  top: 90px;
-  left: 475px;
-  width: 1050px;
+  top: 190px;
+  left: 575px;
+  width: 1550px;
   height: 70px;
   overflow-y: auto;
   background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgba(2, 70, 110, 0.76) 35%, rgb(2, 71, 110) 100%);
@@ -137,32 +152,33 @@ ul li {
 }
 h1{
   color: #02476e;
+  font-size:40px;
   text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff85, 0 0 10px #ffffff, 0 0 5px #ffffff, 0 0 0px #ffffff, 0 0 10px #ffffff, 0 0 0px #ffffff;
 }
 
 select{
-  width: 200px;
-  margin-left: 23%;
+  width: 250px;
+  margin-left: 30%;
   padding: 5px 10px 5px 10px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   height: 42px;
-  font-size: 18px;
+  font-size: 22px;
   background-color: #ffffff;
   border: 1px solid #ffffff;
   color: #02476e;
-  font-size: 18px;
   font-weight: 700;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.753);
 }
 .btn{
-  margin-left: 25%;
+  margin-left: 30%;
   height: 42px;
   background-color: #ffffff;
   color: #02476e;
-  font-size: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-size: 22px;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  padding: 5px 10px 5px 10px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   border: 1px solid #ffffff;
@@ -172,10 +188,12 @@ select{
 }
 .tb{
   position: absolute;
-  left: 28%;
-  top: 20%;
-  width: 1050px;
-  height: 470px;
+  /* left: 28%; */
+  top: 25%;
+  /* width: 1050px; */
+  left: 575px;
+  width: 1550px;
+  height: 570px;
   overflow-y: auto;
   background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgba(2, 70, 110, 0.76) 35%, rgb(2, 71, 110) 100%);
   border-radius: 10px;
@@ -189,7 +207,7 @@ table{
  top: 10px;
  /* transform: translate(-50%,-50%); */
  border-collapse: collapse;
- width:1000px;
+ width:1450px;
  height: 70px;
  border-radius: 10%;
  box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2);
@@ -204,7 +222,7 @@ tr{
 th{
   padding-left: 20px;
   text-align: left;
-  font-size: 20px;
+  font-size: 22px;
   /* border-bottom: 1px solid #000000; */
 }
 td{
@@ -216,7 +234,7 @@ tr{
  
   left: 20px;
   text-align: left;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   padding-left: 16px;
   padding-top: 10px;
@@ -234,6 +252,7 @@ tr{
 
 tr:hover{
   color: #02476e;
+  overflow: hidden;
   background-color: #ffffff;
   transform: scale(1.04);
   box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2);

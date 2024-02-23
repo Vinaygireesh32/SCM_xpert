@@ -1,5 +1,5 @@
 import re
-from pydantic import BaseModel
+from execution.models import Sign
 from fastapi import APIRouter, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -16,11 +16,6 @@ pwd_cxt = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 password_pattern = re.compile(r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$")
 email_pattern = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
-
-class Sign(BaseModel):
-    username: str
-    email: str
-    password: str
 
 @web.get("/signup")
 def Signup(signdata: Request):
@@ -55,11 +50,7 @@ def Signup(request: Request, Username: str = Form(), Email: str = Form(), Create
         # Hash the password before storing it in the database
         
         pw = pwd_cxt.hash(Create_Password)
-        # scmsign = {
-        #     'username': Username,
-        #     'email': Email,
-        #     'password': pw,  # Store the hashed password
-        # }
+        
         scmsign=Sign(username=Username, email=Email, password=pw)
 
 

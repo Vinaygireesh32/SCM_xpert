@@ -81,18 +81,15 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('limits').style.display = "none";
       document.getElementById('password').addEventListener("click", function() {
-        document.getElementById('wrapper').style.marginLeft = "259px";
         document.getElementById('limits').style.display = "block";
       })
       document.getElementById('username').addEventListener("keydown", function(event) {
         if (event.key=="Tab") {
-          document.getElementById('wrapper').style.marginLeft = "259px";
           document.getElementById('limits').style.display = "block";
         }
         
       })
       document.getElementById('username').addEventListener("click", function() {
-        document.getElementById('wrapper').style.marginLeft = "90px";
         document.getElementById('limits').style.display = "none";
       })
     })

@@ -19,7 +19,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("socket created")
 
 # bind this socket to the address we configured earlier
-server.bind(("", 12345))    
+server.bind(("", 12345))
 server.listen(2)
 print(f"[LISTENING] Server is listening on {server}")
 con, addr = server.accept()
@@ -46,9 +46,8 @@ while connected:
                     time.sleep(10)
                 else:
                     continue
- 
            
         except IOError as e:
             print(e)
- 
+
 con.close()

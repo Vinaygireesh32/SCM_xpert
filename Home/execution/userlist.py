@@ -30,7 +30,6 @@ async def get_user_data(request: Request, token: str = Depends(oauth2_scheme)):
         print("Error:", str(e))
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
-
 @web.post("/make_admin")
 async def make_users_admin(request: Request, token: str = Depends(oauth2_scheme)):
     try:

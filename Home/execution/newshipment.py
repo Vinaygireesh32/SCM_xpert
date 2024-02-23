@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from config.config import *  # Importing all items from execute.execute module
 from execution.login import *  # Importing all items from execution.login module
-from pydantic import BaseModel
+from execution.models import Newshipment
 
 # Creating an APIRouter instance named "web"
 web = APIRouter()
@@ -16,21 +16,6 @@ web.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Creating an instance of OAuth2PasswordBearer for authentication
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-# Define a Pydantic model for the new shipment data
-class Newshipment(BaseModel):
-    shipment_num: str
-    container_num: str
-    route_details: str
-    goods_type: str
-    device: str
-    expected_delivery_date: str
-    po_num: str
-    delivery_num: str
-    ndc_num: str
-    batch_id: str
-    serial_num: str
-    description: str
 
 # Route to render the "newshipment.html" template
 @web.get("/newshipment")
@@ -69,5 +54,6 @@ def new_shipment(request: Request, new_ship: Newshipment, token: str = Depends(o
             }
 
             shipment_cred.insert_one(scmdb)  # Inserting new shipment data into the database
-    except Exception:
-        raise HTTPException(status_code=400, detail="user not found")
+    except HTTPException as http:
+        # raise HTTPException(status_code=400, detail=HTTPException.detail)
+        return JSONResponse(status_code=400, content={"msg":http.detail})

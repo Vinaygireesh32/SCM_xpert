@@ -38,11 +38,12 @@ else if (localStorage.getItem("token") === null) {
       return false;
     });
   });
+  document.addEventListener("DOMContentLoaded", function() {
   var button = document.getElementById("myButton");
   button.addEventListener("click", function () {
     alert("You are Not Authorized to Get Data");
   });
-
+  })
 
 
 }).call(this);

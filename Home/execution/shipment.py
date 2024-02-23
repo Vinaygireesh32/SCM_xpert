@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Request, HTTPException, Depends
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from execution.login import jwt  # Importing jwt from execution.login module
-from config.config import shipment_cred, user_cred  # Importing shipment_cred from execute.execute module
+from config.config import shipment_cred  # Importing shipment_cred from execute.execute module
 from fastapi.security import OAuth2PasswordBearer
 
 # Creating an APIRouter instance named "web"

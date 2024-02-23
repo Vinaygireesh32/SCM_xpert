@@ -68,18 +68,15 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('limits').style.display = "none";
       document.getElementById('newpassword').addEventListener("click", function() {
-        document.getElementById('wrapper').style.marginLeft = "200px";
         document.getElementById('limits').style.display = "block";
       })
       document.getElementById('email').addEventListener("keydown", function(event) {
         if (event.key=="Tab") {
-          document.getElementById('wrapper').style.marginLeft = "200px";
           document.getElementById('limits').style.display = "block";
         }
         
       })
       document.getElementById('username').addEventListener("click", function() {
-        document.getElementById('wrapper').style.marginLeft = "90px";
         document.getElementById('limits').style.display = "none";
       })
     })

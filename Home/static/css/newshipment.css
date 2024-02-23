@@ -19,7 +19,7 @@ nav.sidebar {
   position: fixed;
   /* box-shadow: 0 0 5px rgb(255, 255, 255),0 0 25px rgb(255, 255, 255), 0 0 50px rgb(255, 255, 255), 0 0 100px rgb(255, 255, 255), 0 0 200px rgb(255, 255, 255); */
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.658);
-  width: 260px;
+  width: 300px;
   top: 0px;
   left: 0px;
   height: 100%;
@@ -60,8 +60,7 @@ background : rgb(0, 0, 0);
        
       nav.sidebar ul li.active {     
         background-color: white;
-        text-align: center;
-        margin-left: -3px;
+        
         font-style: italic;
         font-size: 20px;  
         border: 1px solid white;
@@ -89,13 +88,16 @@ ul li{
 ul li a{
   
   text-decoration: none;
+  width: 100%;
+  height: 100%;
   font-size: 20px;
   color: #ffffff;
   text-shadow: 10px 0px 20px #7b5ec9, 10px 0px 20px #7b5ec9;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 1000;
   transition: 0.2s ease-in-out;
-  padding-left: 40px;
+  padding-left: 30px;
+  padding-top: 15px;
 }
 ul li:hover {
   border: 1px solid white;
@@ -125,14 +127,16 @@ ul li {
 .container{
     
     position: relative;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     left: 100px;
     width: 900px;
+    height: 800px;
     border-radius: 6px;
     padding: 30px ;
-    
-    margin-top: -70px;
+    border: 1PX solid white;
+    margin-top: -150px;
     background: linear-gradient(90deg, rgb(250, 250, 250) 0%, #8b72d1 35%, #7b5ec9 100%);
+    /* background: linear-gradient(90deg, rgb(250, 250, 250) 0%, #8b72d1 35%, #7b5ec9 100%); */
     /* background: transparent; */
     
     /* box-shadow:
@@ -175,13 +179,15 @@ ul li {
 .container form .fields{
     display: flex;
     align-items: center;
+    padding: 10px 0px 10px 0px;
+    margin-left: -50px;
     justify-content: space-evenly;
     
 }
 form .fields .input-field{
     display: flex;
     width: 300px;
-    margin: 6px 0;
+    margin: 10px 6px 0 60px;
     flex-direction: column;
     padding-left: -40px;
     
@@ -213,7 +219,7 @@ input[type=submit] {
     font-size: 18px;
     font-weight: 700;
     border-radius: 10%;
-    right: -530px;
+    right: -552px;
     position: relative;
     top: 10px;
     width: 100px;
@@ -229,7 +235,7 @@ input[type=reset] {
     position: relative;
     width: 100px;
     height: 45px;
-    right: -65px;
+    right: -48px;
     top: 10px;
     cursor: pointer;
 }
