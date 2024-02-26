@@ -62,7 +62,5 @@ def reset_password(request: Request, email: str = Form(...), username: str = For
 
         success_message = "Password successfully reset"
         return html.TemplateResponse(f, {"request": request, "success_message": success_message})
-    except:
-    # If neither user nor admin is found, return invalid credentials
-        response_content = {"detail": "Invalid username or password"}
-        return JSONResponse(content=response_content, status_code=401)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)

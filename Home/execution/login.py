@@ -27,15 +27,10 @@ class Hash:
     def verify_password(pwd: str, hashed_password: str):  
         return pwd_cxt.verify(pwd, hashed_password)
 
-# def user_db(email:str):
-#     user = user_cred.find_one({"email" : email})
-#     return user
-
-
 
 def create_jwt_token(user,role):
     credentials = {"sub": user["username"], "email": user["email"], "role": role}
-    expires = timedelta(minutes=30)
+    expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode = credentials.copy()
     expire = datetime.utcnow() + expires
     to_encode.update({"exp": expire})
@@ -88,7 +83,5 @@ def login(request: Request, username: str = Form(...), password: str = Form()):
                 "role": "Admin",
             }
             return JSONResponse(content=response_content, status_code=200) 
-    except:
-    # If neither user nor admin is found, return invalid credentials
-        response_content = {"detail": "Invalid username or password"}
-        return JSONResponse(content=response_content, status_code=401)
+    except Exception as e:
+        return JSONResponse(content={"error": str(e)}, status_code=500)

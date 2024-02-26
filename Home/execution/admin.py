@@ -10,3 +10,4 @@ web.mount("/static", StaticFiles(directory="static"), name = "static")
 @web.get("/admin")
 def admin(request : Request):
     return html.TemplateResponse("admin.html", { "request" : request})
+

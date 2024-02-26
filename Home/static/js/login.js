@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 body: formData,
             })
-               
                 .then(response => {
                     if (response.status === 200) {
                         return response.json();
