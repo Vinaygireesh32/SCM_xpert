@@ -144,7 +144,8 @@ ul li {
   overflow-y: auto;
   /* background-color: #ffffffc7; */
   overflow-x: hidden;
-  background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgba(2, 70, 110, 0.89) 35%, rgb(2, 71, 110) 100%);
+  /* background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgba(2, 70, 110, 0.89) 35%, rgb(2, 71, 110) 100%); */
+  background: linear-gradient(90deg, rgb(211, 209, 209) 0%, rgba(2, 70, 110, 0.89) 35%, rgb(2, 71, 110) 100%);
   border-radius: 10px;
 }
 table{
@@ -196,3 +197,4 @@ tr:hover{
   transform: scale(1.03);
   box-shadow: 2px 2px 12px rgba(0,0,0,0.2),-1px -1px -1px 8px rgba(0,0,0,0.2);
 }
+

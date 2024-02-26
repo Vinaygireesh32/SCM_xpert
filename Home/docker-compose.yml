@@ -6,6 +6,7 @@ services:
     image: vinay132/scmxpert:latest
   # Use custom image from Docker Hub
     ports:
+    
       - "8000:8000"
 
   # Zookeeper for Kafka

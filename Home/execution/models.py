@@ -2,17 +2,17 @@ from pydantic import BaseModel
 
 # Define a Pydantic model for the new shipment data
 class Newshipment(BaseModel):
-    shipment_num: str
-    container_num: str
+    shipment_num: int
+    container_num: int
     route_details: str
     goods_type: str
-    device: str
+    device: int
     expected_delivery_date: str
-    po_num: str
-    delivery_num: str
-    ndc_num: str
-    batch_id: str
-    serial_num: str
+    po_num: int
+    delivery_num: int
+    ndc_num: int
+    batch_id: int
+    serial_num: int
     description: str
 
 

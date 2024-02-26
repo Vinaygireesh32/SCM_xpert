@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).ready(function () {
         const token = localStorage.getItem("token");
 
-        $("#submit").on("click", function (event) {
+        $("#submit").on("click", async function (event) {
             event.preventDefault();
             const selectusername = $("#username").val();
 
-            fetch("/userlist", {
+            await fetch("/userlist", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -24,17 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 }),
             })
                 .then(response => {
-                    console.log(response);
-                    if (response.status !== 200) {
-                        throw new Error(`No User found`);
-                        
-                    }else {
-                        return response.json();
-                        
-                    }
-                    
+                    return response.json();
                 })
                 .then(response => {
+                    console.log(response)
+                    if (typeof response.data === "string") {
+                        $("#successMessage").text(response.data);
+                    setTimeout(function () {
+                        $("#successMessage").text("");
+                    }, 3000);
+                    } else {
                     console.log(response);
                     let usersHTML = "";
 
@@ -49,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                     $("#tablebody").html(usersHTML);
+                }
                 })
                 .catch(error => {
                     console.log(error);

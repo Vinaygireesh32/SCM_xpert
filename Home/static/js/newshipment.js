@@ -23,23 +23,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Reset error message visibility
     $("#error-message").css("visibility", "hidden");
-
-    // Check if any field is empty
-    const fields = ["shipment_num", "container_num", "route_details", "goods_type", "device", "expected_delivery_date", "po_num", "delivery_num", "ndc_num", "batch_id", "serial_num", "description"];
-
-    for (const field of fields) {
-      if ($("#" + field).val() === "") {
-        $("#error-message").text("Please enter all fields !!");
+// Check if any field is empty
+const fields = ["shipment_num", "container_num", "route_details", "goods_type", "device", "expected_delivery_date", "po_num", "delivery_num", "ndc_num", "batch_id", "serial_num", "description"];
+ 
+for (const field of fields) {
+    const fieldValue = $("#" + field).val();
+    // Check if the field is empty or if it's a select tag and no option is selected
+    if (fieldValue === "" || (fieldValue === null && $("#" + field)[0].tagName.toLowerCase() === "select")) {
+        $("#error-message").text("Please enter all fields!!");
         setTimeout(function () {
-          $("#error-message").text("");
-      }, 3000);
+            $("#error-message").text("");
+        }, 3000);
         $("#error-message").css({
-          visibility: "visible",
-          color: "white"
+            visibility: "visible",
+            color: "white"
         });
         return;
-      }
     }
+}
 
     // If all fields are filled, proceed with the fetch
     fetch("/newshipment", {

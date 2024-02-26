@@ -28,7 +28,7 @@ def new_shipment(request: Request, new_ship: Newshipment, token: str = Depends(o
     decode = decode_token(token)  # Decoding JWT token
     try:
         # Validate shipment number length
-            if len(new_ship.shipment_num) != 7:
+            if len(str(new_ship.shipment_num)) != 7:
                 raise HTTPException(status_code=400, detail="Shipment number must be exactly 7 digits")
 
         # Check if the shipment number already exists

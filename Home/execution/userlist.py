@@ -20,12 +20,13 @@ async def get_user_data(request: Request, token: str = Depends(oauth2_scheme)):
         if token:
             data = await request.json()
             username = data.get("username")
-            if username:
-                users = list(user_cred.find({'username': str(username)}, {'_id': 0}))
-                # print(users)
-                if users:
-                    return JSONResponse(content={"data": users}, status_code=200)
-                return JSONResponse(content={"data": "no user found"}, status_code=400)
+            if not username:
+                return JSONResponse(content={"data": "Username Required*"}, status_code=400)
+            users = list(user_cred.find({'username': str(username)}, {'_id': 0}))
+            # print(users)
+            if users:
+                return JSONResponse(content={"data": users}, status_code=200)
+            return JSONResponse(content={"data": "User not Found"}, status_code=400)
     except Exception as e:
         print("Error:", str(e))
         return JSONResponse(content={"error": str(e)}, status_code=500)
