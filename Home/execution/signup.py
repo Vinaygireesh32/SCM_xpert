@@ -25,10 +25,11 @@ def Signup(signdata: Request):
 def Signup(request: Request, Username: str = Form(), Email: str = Form(), Create_Password: str = Form(), Confirm_Password: str = Form()):
     try:
         # Check if user already exists
-        if user_cred.find_one({'username': Username}):
-            error_message = "User already registered **"
+        if user_cred.find_one({'username': Username}) or admin_cred.find_one({'username':Username}):
+            error_message = "Username already registered **"
             return html.TemplateResponse("signup.html", {"request": request, "error_message": error_message})
-        if user_cred.find_one({'email': Email}):
+
+        if user_cred.find_one({'email': Email}) or admin_cred.find_one({'email':Email}):
             error_message = "Email already registered **"
             return html.TemplateResponse("signup.html", {"request": request, "error_message": error_message})
 

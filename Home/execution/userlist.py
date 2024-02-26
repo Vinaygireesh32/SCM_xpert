@@ -45,10 +45,7 @@ async def make_users_admin(request: Request, token: str = Depends(oauth2_scheme)
                         # Move user from user_cred to admin_cred
                         user_cred.delete_one({"username": user["username"]})
                         admin_cred.insert_one(user)
-                        
-                        # Delete shipments associated with the user from shipment_cred
-                        shipment_cred.delete_many({"username": user["username"]})
-                        
+                      
                         success_messages.append(f"User '{username}' made admin successfully")
                 
                 return JSONResponse(content={"success": success_messages}, status_code=200)
