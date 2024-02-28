@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Update HTML once after the loop
                     $("#tablebody").html(shipment);
                 })
-                .catch(error => {
+                .catch(error => { 
                     console.log("Error:", error.message);
                 });
         });
