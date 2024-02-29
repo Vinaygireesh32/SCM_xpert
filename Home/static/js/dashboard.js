@@ -52,4 +52,15 @@ else if (localStorage.getItem("token") === null) {
 
 console.log(localStorage.getItem("token"));
 
+function logout() {
+  // Clear user-related data from localStorage
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("email");
+  sessionStorage.removeItem("role");
+
+  // Redirect to the login page or any other desired destination
+  window.location.href = "/login";
+}
+
 

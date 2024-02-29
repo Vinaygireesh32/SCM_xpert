@@ -49,11 +49,9 @@ def Signup(request: Request, Username: str = Form(), Email: str = Form(), Create
             return html.TemplateResponse("signup.html", {"request": request, "error_message": error_message})
 
         # Hash the password before storing it in the database
-        
         pw = pwd_cxt.hash(Create_Password)
-        
-        scmsign=Sign(username=Username, email=Email, password=pw)
 
+        scmsign=Sign(username=Username, email=Email, password=pw)
 
         user_cred.insert_one(dict(scmsign))
         error_message="Succesully Registered"

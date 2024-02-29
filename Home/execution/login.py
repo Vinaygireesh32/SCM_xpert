@@ -7,30 +7,26 @@ from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 from jose import jwt, ExpiredSignatureError, JWTError
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 web = APIRouter()
 html = Jinja2Templates(directory="html")
 web.mount("/static", StaticFiles(directory="static"), name="static")
 
-SECRET_KEY = "yourkey"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 pwd_cxt = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-class Hash:
-    def hash_password(pwd: str):
-        return pwd_cxt.hash(pwd)
-
-    def verify_password(pwd: str, hashed_password: str):  
+def verify_password(pwd: str, hashed_password: str):  
         return pwd_cxt.verify(pwd, hashed_password)
 
 
 def create_jwt_token(user,role):
     credentials = {"sub": user["username"], "email": user["email"], "role": role}
-    expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expires = timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")))
     to_encode = credentials.copy()
     expire = datetime.utcnow() + expires
     to_encode.update({"exp": expire})
@@ -39,7 +35,7 @@ def create_jwt_token(user,role):
 
 def decode_token(token: str = Depends(oauth2_scheme)):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, os.getenv("SECRET_KEY"), algorithms=[os.getenv("ALGORITHM")])
     # Check token expiration
         if payload["exp"] <= datetime.utcnow().timestamp():
             raise ExpiredSignatureError("Token has expired")
@@ -58,10 +54,10 @@ def login(request: Request):
 
 @web.post("/login")
 def login(request: Request, username: str = Form(...), password: str = Form()):
-    
+
     user = user_cred.find_one({"username": username})
     try:
-        if user and Hash.verify_password(password, user["password"]) :
+        if user and verify_password(password, user["password"]) :
             token = create_jwt_token(user, role="user")
             response_content = {
                 "token": token,
@@ -74,7 +70,7 @@ def login(request: Request, username: str = Form(...), password: str = Form()):
     
         admin = admin_cred.find_one({"username": username})
    
-        if admin and Hash.verify_password(password, admin["password"]):
+        if admin and verify_password(password, admin["password"]):
             token = create_jwt_token(admin, role="admin")
             response_content = {
                 "token": token,

@@ -51,3 +51,14 @@ $(document).ready(function () {
   $("#email").text(`Email: ${sessionStorage.getItem("email")}`);
   $("#role").text(`Role    : ${sessionStorage.getItem("role")}`);
 });
+
+function logout() {
+  // Clear user-related data from localStorage
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("email");
+  sessionStorage.removeItem("role");
+
+  // Redirect to the login page or any other desired destination
+  window.location.href = "/login";
+}

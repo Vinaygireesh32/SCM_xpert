@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException,Depends
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from execution.login import jwt  # Importing jwt from execution.login module
-from config.config import shipment_cred  # Importing shipment_cred from execute.execute module
+from execution.login import jwt,decode_token  # Importing jwt from execution.login module
+from config.config import shipment_cred,admin_cred  # Importing shipment_cred from execute.execute module
 from fastapi.security import OAuth2PasswordBearer
 
 # Creating an APIRouter instance named "web"
@@ -25,17 +25,18 @@ def shipment_html(request: Request):
 
 # Route to fetch shipment data in JSON format
 @web.get("/shipmenttable")
-def shipment1(request: Request):
+def shipment1(request: Request,token:dict = Depends(decode_token)):
     try:
         # Decoding JWT token from request headers
-        payload = jwt.decode(request.headers["authorization"][7:], "yourkey", algorithms="HS256")
-        if payload:
-            # Fetching shipment data based on the username in JWT payload
-            ship_data = list(shipment_cred.find({},{"_id": 0}))
-            if ship_data:
-                return JSONResponse(content=ship_data, status_code=200)  # Returning fetched data as JSON response
-        # Returning an HTTPException if shipments are not found
-        return HTTPException(status_code=400, detail="Shipments Not Found")
+        # payload = jwt.decode(request.headers["authorization"][7:], "yourkey", algorithms="HS256")
+        if token:
+            if admin_cred.find_one({"username" : token["sub"]}):
+                # Fetching shipment data based on the username in JWT payload
+                ship_data = list(shipment_cred.find({},{"_id": 0}))
+                if ship_data:
+                    return JSONResponse(content=ship_data, status_code=200)  # Returning fetched data as JSON response
+            # Returning an HTTPException if shipments are not found
+            return HTTPException(status_code=400, detail="Shipments Not Found")
     except HTTPException as http_error:
         # Handling HTTPException and returning error message as JSON response
         return JSONResponse(content={"error_message": http_error.detail})

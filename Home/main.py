@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-
 from execution.login import web as log
 from execution.signup import web as signup
 from execution.newshipment import web as newship

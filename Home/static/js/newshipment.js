@@ -13,11 +13,21 @@ function getFormattedDate() {
   return `${year}-${month}-${day}`;
 }
 
+function validateInput(input) {
+  // Remove non-digit characters
+  let inputValue = input.value.replace(/\D/g, '');
+  // Limit the input to 7 digits
+  inputValue = inputValue.substring(0, 7);
+  // Update the input value
+  input.value = inputValue;
+  
+}
+
 // Set the min attribute of the date input to today's date
-document.getElementById('expected_delivery_date').min = getFormattedDate();
+
 
 document.addEventListener("DOMContentLoaded", function () {
-
+  document.getElementById('expected_delivery_date').min = getFormattedDate();
   document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -97,3 +107,14 @@ for (const field of fields) {
       });
   });
 });
+
+function logout() {
+  // Clear user-related data from localStorage
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("email");
+  sessionStorage.removeItem("role");
+
+  // Redirect to the login page or any other desired destination
+  window.location.href = "/login";
+}

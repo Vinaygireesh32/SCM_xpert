@@ -23,7 +23,7 @@ server.bind(("", 12345))
 server.listen(2)
 print(f"[LISTENING] Server is listening on {server}")
 con, addr = server.accept()
-# print(f'CONNECTION FROM {SERVER_HOST} HAS BEEN ESTABLISHED')
+
 connected = True
 while connected:
         try:

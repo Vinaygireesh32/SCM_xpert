@@ -8,6 +8,7 @@
     <link rel="icon" href="/static/logo.png" type="image/icon type">
     
     <link rel="stylesheet" href="/static/css/newshipment.css">
+    <script src="../static/js/newshipment.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
@@ -125,28 +126,7 @@
         </div>
     </div>
     <p id="value" style="display: none;">{{token}}</p>
-    <script>
-        function logout() {
-            // Clear user-related data from localStorage
-            localStorage.removeItem("token");
-            sessionStorage.removeItem("username");
-            sessionStorage.removeItem("email");
-            sessionStorage.removeItem("role");
-
-            // Redirect to the login page or any other desired destination
-            window.location.href = "/login";
-        }
-        function validateInput(input) {
-            // Remove non-digit characters
-            let inputValue = input.value.replace(/\D/g, '');
-            // Limit the input to 7 digits
-            inputValue = inputValue.substring(0, 7);
-            // Update the input value
-            input.value = inputValue;
-            
-        }
-    </script>
-
+        
 </body>
-<script src="../static/js/newshipment.js"></script>
+
 </html>

@@ -23,5 +23,4 @@ producer = Producer(config)
 
 while connected:
     message = soc.recv(1024).decode("utf-8")
-    print(message)
     producer.produce(topic_name, key="key", value=message)

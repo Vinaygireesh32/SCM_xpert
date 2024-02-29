@@ -15,28 +15,29 @@ def details(request: Request):
     return html.TemplateResponse("userlist.html", {"request": request})
 
 @web.post("/userlist")
-async def get_user_data(request: Request, token: str = Depends(oauth2_scheme)):
+async def get_user_data(request: Request, token: str = Depends(decode_token)):
     try:
-        if token:
+
+        if admin_cred.find_one({"username" : token["sub"]}):
             data = await request.json()
             username = data.get("username")
             if not username:
                 return JSONResponse(content={"data": "Username Required*"}, status_code=400)
             users = list(user_cred.find({'username': str(username)}, {'_id': 0}))
-            # print(users)
+
             if users:
                 return JSONResponse(content={"data": users}, status_code=200)
             return JSONResponse(content={"data": "User not Found"}, status_code=400)
     except Exception as e:
-        print("Error:", str(e))
+
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
 @web.post("/make_admin")
-async def make_users_admin(request: Request, token: str = Depends(oauth2_scheme)):
+async def make_users_admin(request: Request, token: str = Depends(decode_token)):
     try:
-        if token:
+         if admin_cred.find_one({"username" : token["sub"]}):
             data = await request.json()
-            print(data)
+
             if data and "usernames" in data:
                 success_messages = []
 
@@ -46,9 +47,9 @@ async def make_users_admin(request: Request, token: str = Depends(oauth2_scheme)
                         # Move user from user_cred to admin_cred
                         user_cred.delete_one({"username": user["username"]})
                         admin_cred.insert_one(user)
-                      
+
                         success_messages.append(f"User '{username}' made admin successfully")
-                
+
                 return JSONResponse(content={"success": success_messages}, status_code=200)
 
     except Exception as e:
