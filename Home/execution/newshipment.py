@@ -20,7 +20,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # Route to render the "newshipment.html" template
 @web.get("/newshipment")
 def new_shipment(newdata: Request):
-    return html.TemplateResponse("newshipment.html", {"request": newdata, "token": "your_token_here"})
+    return html.TemplateResponse("newshipment.html", {"request": newdata})
 
 # Route to handle POST requests for adding new shipment data
 @web.post("/newshipment")

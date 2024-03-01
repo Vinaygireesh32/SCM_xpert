@@ -30,17 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then(response => {
-                    let shipment = "";
+                    let deviceid = "";
 
-                    for (let shipment_no = 0; shipment_no < response.data.length; shipment_no++) {
-                        const ship = response.data[shipment_no];
+                    for (let device_no = 0; device_no < response.data.length; device_no++) {
+                        const dev = response.data[device_no];
 
-                        shipment += "<tr><td>" +
-                            ship.Device_ID + "</td><td>" +
-                            ship.Battery_Level + "</td><td>" +
-                            ship.First_Sensor_temperature + "</td><td>" +
-                            ship.Route_From + "</td><td>" +
-                            ship.Route_To + "</td></tr>";
+                        deviceid += "<tr><td>" +
+                            dev.Device_ID + "</td><td>" +
+                            dev.Battery_Level + "</td><td>" +
+                            dev.First_Sensor_temperature + "</td><td>" +
+                            dev.Route_From + "</td><td>" +
+                            dev.Route_To + "</td></tr>";
                     }
 
                     // Update HTML once after the loop

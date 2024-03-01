@@ -30,7 +30,7 @@ def create_jwt_token(user,role):
     to_encode = credentials.copy()
     expire = datetime.utcnow() + expires
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, "yourkey", algorithm="HS256")
+    encoded_jwt = jwt.encode(to_encode, os.getenv("SECRET_KEY"), algorithm=os.getenv("ALGORITHM"))
     return encoded_jwt
 
 def decode_token(token: str = Depends(oauth2_scheme)):
@@ -69,7 +69,7 @@ def login(request: Request, username: str = Form(...), password: str = Form()):
     
     
         admin = admin_cred.find_one({"username": username})
-   
+    
         if admin and verify_password(password, admin["password"]):
             token = create_jwt_token(admin, role="admin")
             response_content = {
